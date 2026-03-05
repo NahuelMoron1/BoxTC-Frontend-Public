@@ -1,0 +1,16 @@
+.surrender-button {
+  background-color: transparent;
+  border: 1px solid rgb(232, 232, 232);
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.surrender-button:hover {
+  transform: scale(1.1);
+}
+
+.surrender-button img {
+  width: 32px;
+  height: 32px;
+}

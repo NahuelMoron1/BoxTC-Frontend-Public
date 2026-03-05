@@ -1,0 +1,89 @@
+<app-impostor-mode-selector
+  *ngIf="!gameMode && gamedata"
+  (guessSelected)="startGame($event)"
+></app-impostor-mode-selector>
+
+<app-game-not-found
+  *ngIf="loaded && !gamedata?.id"
+  [gameName]="'impostor'"
+></app-game-not-found>
+
+<div class="f1-game-container" *ngIf="gamedata && gameMode">
+  <h2 class="f1-title">{{ gamedata.title }}</h2>
+  <p class="f1-subtitle">
+    Avoid the impostors — based on: <strong>{{ gamedata.type }}</strong>
+  </p>
+
+  <div class="f1-grid">
+    <div
+      class="f1-card"
+      *ngFor="let entity of gamedata.results"
+      [class.selected]="isSelected(entity)"
+      [class.correct]="
+        gameMode === 'normal' && gameOver && isInnocentAfterSurrender(entity)
+      "
+      [class.wrong]="
+        gameMode === 'normal' && gameOver && isImpostorAfterSurrender(entity)
+      "
+      [class.correct-byone]="gameMode === 'byOne' && wasCorrectByOne(entity)"
+      [class.wrong-byone]="gameMode === 'byOne' && wasWrongByOne(entity)"
+      [class.missed-byone]="
+        gameMode === 'byOne' && gameOver && wasMissedInnocentByOne(entity)
+      "
+      (click)="handleClick(entity)"
+    >
+      <img [src]="getEntityImage(entity)" class="f1-image" alt="Team" />
+      <div class="f1-name">{{ getEntityName(entity) }}</div>
+      <div class="f1-stat">{{ gamedata.type }}</div>
+    </div>
+  </div>
+
+  <div class="f1-actions">
+    <button *ngIf="!gameOver" class="f1-submit-btn" (click)="verifySelection()">
+      🚦 Verify Selection
+    </button>
+    <app-surrender *ngIf="!gameOver" (surrender)="surrender()"></app-surrender>
+  </div>
+
+  <!-- Normal mode result -->
+  <div
+    *ngIf="gameMode === 'normal' && gameResult"
+    class="f1-result"
+    [class.win]="gameResult.game_won"
+    [class.lose]="!gameResult.game_won"
+  >
+    <p>{{ gameResult.game_won ? "🏁 You won!" : "❌ You lost!" }}</p>
+    <!-- Mostrar mensaje diferente si se rindió -->
+    <ng-container *ngIf="!hasSurrendered; else surrenderedMessage">
+      <p *ngIf="gameResult.impostors_selected.length > 0">
+        You selected {{ gameResult.impostors_selected.length }} impostors
+      </p>
+      <p *ngIf="gameResult.impostors_selected.length === 0">
+        You selected {{ gameResult.innocents_selected.length }} out of
+        {{ gameResult.all_innocents.length }} correct
+      </p>
+    </ng-container>
+    <ng-template #surrenderedMessage>
+      <p>You gave up. Here are the answers:</p>
+      <p>Impostors: {{ impostorIDs.length }}</p>
+      <p>Innocents: {{ innocentIDs.length }}</p>
+    </ng-template>
+  </div>
+
+  <!-- ByOne mode result -->
+  <div
+    *ngIf="gameMode === 'byOne' && gameResultByOne && gameOver"
+    class="f1-result"
+    [class.win]="gameResultByOne.game_won"
+    [class.lose]="!gameResultByOne.game_won"
+  >
+    <p>
+      {{
+        gameResultByOne.game_won
+          ? "🏁 You won!"
+          : "❌ You selected an impostor!"
+      }}
+    </p>
+    <p *ngIf="gameOver">Game Over — Try again tomorrow!</p>
+  </div>
+</div>

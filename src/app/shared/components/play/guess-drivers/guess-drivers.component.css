@@ -1,0 +1,309 @@
+.guess-drivers-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  /* Fondo transparente para mantener el estilo general de la aplicación */
+  min-height: 80vh;
+}
+
+.game-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  /* Color heredado del tema general */
+}
+
+.driver-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.driver-wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 0;
+  overflow: hidden;
+  margin-bottom: 30px;
+  border: 3px solid #00b4d8; /* Borde azul claro */
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.correct-wrapper {
+  border-color: #4caf50;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
+}
+
+.surrender-wrapper {
+  border-color: #f44336;
+  box-shadow: 0 0 15px rgba(244, 67, 54, 0.7);
+}
+
+.driver-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.driver-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.driver-silhouette {
+  width: 90%;
+  height: 90%;
+  background-color: #333; /* Color más oscuro para la silueta */
+  mask-image: url('https://cdn-icons-png.flaticon.com/512/3048/3048122.png');
+  -webkit-mask-image: url('https://cdn-icons-png.flaticon.com/512/3048/3048122.png');
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.driver-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.teams-section {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.teams-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap; /* Evitar que los equipos se envuelvan */
+  gap: 10px;
+  overflow-x: auto; /* Permitir desplazamiento horizontal si es necesario */
+  padding: 10px 0;
+}
+
+.team-wrapper {
+  min-width: 80px;
+  width: 80px;
+  height: 80px;
+  border-radius: 0;
+  overflow: hidden;
+  border: 2px solid #4caf50; /* Borde verde */
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2e7d32; /* Fondo verde oscuro moderno */
+  position: relative;
+}
+
+/* Estilo para equipos revelados durante el juego (antes del game over) */
+.team-wrapper.revealed:not(.game-over) {
+  border-color: #e10600; /* Borde rojo */
+}
+
+/* Mantener el borde rojo para equipos que se revelaron durante el juego, incluso después del game over */
+.team-wrapper.revealed.game-over.revealed-during-game {
+  border-color: #e10600; /* Borde rojo */
+}
+
+.team-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cambiado a cover para que ocupe todo el espacio */
+  padding: 0; /* Eliminado el padding para que ocupe todo el cuadrado */
+}
+
+.team-name {
+  font-size: 10px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  width: 100%;
+  padding: 2px 0;
+  position: absolute;
+  bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.team-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #2e7d32; /* Fondo verde oscuro moderno */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.team-number {
+  font-size: 36px;
+  font-weight: bold;
+  color: #8bc34a; /* Color verde más claro para contrastar con el fondo oscuro */
+}
+
+.team-name {
+  font-size: 10px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  width: 100%;
+  padding: 2px 0;
+  position: absolute;
+  bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.input-section {
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.driver-input {
+  flex-grow: 1;
+  padding: 12px 15px;
+  border: 2px solid #ccc;
+  border-radius: 0;
+  font-size: 16px;
+  background-color: white;
+  color: #333;
+}
+
+.driver-input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.submit-button {
+  padding: 12px 20px;
+  background-color: #e10600; /* Rojo F1 */
+  color: white;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #c10500;
+}
+
+.hints-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.hint-button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.hint-button:hover:not(:disabled) {
+  background-color: #555;
+}
+
+.hint-button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.hints-display {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
+}
+
+.hint-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hint-label {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #333;
+}
+
+.hint-value {
+  color: #e10600; /* Rojo F1 */
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilos responsivos para que los cuadros se hagan más pequeños en pantallas pequeñas */
+@media (max-width: 768px) {
+  .team-wrapper {
+    min-width: 60px;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .team-number {
+    font-size: 24px;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .team-wrapper {
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .team-number {
+    font-size: 20px;
+  }
+}

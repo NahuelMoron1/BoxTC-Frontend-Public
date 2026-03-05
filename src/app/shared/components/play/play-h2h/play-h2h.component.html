@@ -1,0 +1,29 @@
+<app-h2h-mode-selector
+  *ngIf="!gameMode && gameID"
+  (guessSelected)="startGame($event)"
+></app-h2h-mode-selector>
+
+<app-game-not-found
+  *ngIf="loaded && !gameID"
+  [gameName]="'head to head'"
+></app-game-not-found>
+
+<div class="f1-game-container" *ngIf="gameData && gameMode">
+  <h2 class="f1-title">{{ gameData.title }}</h2>
+  <app-h2h-team-info [gameData]="gameData"></app-h2h-team-info>
+
+  <!-- Game stats display (always visible) -->
+  <app-h2h-stats-display
+    [gameData]="gameData"
+    [gameResults]="gameResult || []"
+    [savedSelections]="userSelections"
+    [gameOver]="gameOver"
+    (statSelected)="handleStatSelected($event)"
+    (submitGuess)="submitGuess()"
+  >
+  </app-h2h-stats-display>
+
+  <!-- Game won/lost screens -->
+  <app-game-won *ngIf="gameOver && gameWin"></app-game-won>
+  <app-game-lost *ngIf="gameOver && !gameWin"></app-game-lost>
+</div>

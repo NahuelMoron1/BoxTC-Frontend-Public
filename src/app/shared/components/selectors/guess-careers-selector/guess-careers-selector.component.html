@@ -1,0 +1,29 @@
+<div class="f1-mode-wrapper">
+    <div class="f1-mode-selector">
+      <h2 class="f1-mode-title">Paddock1 Guess Driver</h2>
+      <p class="f1-mode-description">
+        Choose your game mode and test your motorsport instincts.<br />
+        Will you guess the driver by his career teams?
+      </p>
+  
+      <div class="f1-mode-buttons">
+        <button
+          (click)="timer = false"
+          class="f1-mode-btn soft"
+          [class.selected]="timer === false"
+        >
+          Normal Mode
+        </button>
+      </div>
+  
+      <button class="f1-start-btn" (click)="startGame()">Start Game</button>
+    </div>
+  
+    <div class="f1-mode-image-placeholder">
+      <!-- Acá podés poner la imagen del impostor -->
+      <div class="f1-image-box">
+        <img src="guess_careers2.png" alt="" />
+      </div>
+    </div>
+  </div>
+  

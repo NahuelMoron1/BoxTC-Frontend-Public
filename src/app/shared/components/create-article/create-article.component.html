@@ -1,0 +1,59 @@
+<div class="detail-container">
+  <!-- Imagen editable con espacio reservado -->
+  <div class="image-wrapper">
+    <label class="image-dropzone">
+      <span *ngIf="!imagePreview">📷 Click to upload image</span>
+      <input type="file" (change)="onFileSelected($event)" />
+      <img *ngIf="imagePreview" [src]="imagePreview" alt="Preview image" />
+    </label>
+  </div>
+
+  <!-- Título editable -->
+  <input
+    type="text"
+    [(ngModel)]="article.title"
+    placeholder="Article Title"
+    class="title editable-input"
+  />
+
+  <!-- Autor y fecha -->
+  <div class="meta editable-meta">
+    <span class="by-label">By</span>
+    <input
+      type="text"
+      [(ngModel)]="article.author"
+      placeholder="Author"
+      class="meta-input short"
+    />
+    <input type="date" [(ngModel)]="article.date" class="meta-input short" />
+  </div>
+
+  <textarea
+    [(ngModel)]="article.summary"
+    rows="3"
+    placeholder="Short summary of the article..."
+    class="summary-textarea"
+  ></textarea>
+
+  <!-- Texto completo -->
+  <textarea
+    [(ngModel)]="article.text"
+    rows="10"
+    placeholder="Write your article here..."
+    class="full-text editable-textarea"
+  ></textarea>
+
+  <!-- Botón de guardar -->
+  <div class="save-box">
+    <button *ngIf="!articleSaved" (click)="submitArticle()">
+      ✅ Save Article
+    </button>
+
+    <div *ngIf="articleSaved" class="saved-actions">
+      <button class="saved" (click)="goToEdit()">✅ Edit Article</button>
+      <button class="create-another" (click)="createAnotherArticle()">
+        ➕ Create Another
+      </button>
+    </div>
+  </div>
+</div>

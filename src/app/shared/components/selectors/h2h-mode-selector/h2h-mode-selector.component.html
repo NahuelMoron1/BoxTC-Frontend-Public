@@ -1,0 +1,35 @@
+<div class="f1-mode-wrapper">
+  <div class="f1-mode-selector">
+    <h2 class="f1-mode-title">Paddock1 H2H</h2>
+    <p class="f1-mode-description">
+      Choose your game mode and test your motorsport instincts.<br />
+      Will you guess the correct driver?
+    </p>
+
+    <div class="f1-mode-buttons">
+      <button
+        (click)="gameMode = 'normal'"
+        class="f1-mode-btn soft"
+        [class.selected]="gameMode === 'normal'"
+      >
+        Normal Mode
+      </button>
+      <button
+        (click)="gameMode = 'byOne'"
+        class="f1-mode-btn ultra"
+        [class.selected]="gameMode === 'byOne'"
+      >
+        One-by-One Mode
+      </button>
+    </div>
+
+    <button class="f1-start-btn" (click)="startGame()">Start Game</button>
+  </div>
+
+  <div class="f1-mode-image-placeholder">
+    <!-- Acá podés poner la imagen del impostor -->
+    <div class="f1-image-box">
+      <img src="h2h.png" alt="" />
+    </div>
+  </div>
+</div>

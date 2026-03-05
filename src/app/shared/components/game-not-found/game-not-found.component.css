@@ -1,0 +1,95 @@
+.no-game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 10vh);
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  font-family: "Orbitron", sans-serif;
+}
+
+.message-box {
+  text-align: center;
+  padding: 3rem 2rem;
+  border: 2px solid #ff1e1e;
+  border-radius: 16px;
+  background-color: #121212;
+  box-shadow: 0 0 30px rgba(255, 30, 30, 0.4);
+  animation: pulse 2s infinite;
+  max-width: 600px;
+}
+
+.title {
+  font-size: 2.2rem;
+  color: #ff1e1e;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 30, 30, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 30, 30, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(255, 30, 30, 0.2);
+  }
+}
+
+/* 📲 Tablet */
+@media (max-width: 1024px) {
+  .no-game-container {
+    height: auto; /* evita que quede demasiado alto en pantallas medianas */
+    padding: 2rem 1rem;
+  }
+
+  .message-box {
+    max-width: 500px;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+/* 📱 Mobile */
+@media (max-width: 640px) {
+  .no-game-container {
+    height: auto;
+    padding: 1.5rem 1rem;
+  }
+
+  .message-box {
+    max-width: 90%;
+    padding: 2rem 1rem;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0;
+    text-align: center;
+  }
+}

@@ -1,0 +1,154 @@
+<div class="f1-menu-container">
+  <h1 class="f1-menu-title">🏁 F1 Challenge Hub</h1>
+  <p class="f1-menu-subtitle">
+    Choose your game mode and test your motorsport knowledge
+    <br />
+    <br />
+    Paddock1Game is now released! Have fun and test your F1 knowledge now!
+  </p>
+
+  <div class="f1-game-grid">
+    <!-- Impostor Game -->
+    <div
+      class="f1-game-card"
+      [ngClass]="{
+        'f1-win': gameStatuses.impostor === 'win',
+        'f1-lost': gameStatuses.impostor === 'lost',
+      }"
+    >
+      <div class="f1-game-image">
+        <!-- Tu imagen va acá -->
+        <img src="impostor.png" alt="Impostor Game" />
+      </div>
+      <div class="f1-game-info">
+        <h3>Paddock1 Impostor</h3>
+        <p>Detect the impostors among the grid. Based on real stats.</p>
+        <button class="f1-play-btn" routerLink="/play/impostor">PLAY</button>
+      </div>
+    </div>
+
+    <!-- Top 10 Game -->
+    <div
+      class="f1-game-card"
+      [ngClass]="{
+        'f1-win': gameStatuses.best10 === 'win',
+        'f1-lost': gameStatuses.best10 === 'lost',
+      }"
+    >
+      <div class="f1-game-image">
+        <img src="top10.png" alt="Top 10 Game" />
+      </div>
+      <div class="f1-game-info">
+        <h3>Paddock1 Top 10</h3>
+        <p>Guess the top 10 drivers, teams or circuits for a given stat.</p>
+        <button class="f1-play-btn" routerLink="/play/best10">PLAY</button>
+      </div>
+    </div>
+
+    <!-- Wordle Game -->
+    <div
+      class="f1-game-card"
+      [ngClass]="{
+        'f1-win': gameStatuses.wordle === 'win',
+        'f1-lost': gameStatuses.wordle === 'lost',
+      }"
+    >
+      <div class="f1-game-image">
+        <img src="wordle.png" alt="Wordle Game" />
+      </div>
+      <div class="f1-game-info">
+        <h3>Paddock1 Wordle</h3>
+        <p>Guess the hidden driver, team or track in 6 attempts.</p>
+        <button class="f1-play-btn" routerLink="/play/wordle">PLAY</button>
+      </div>
+    </div>
+
+    <!-- Connections Game -->
+    <div
+      class="f1-game-card"
+      [ngClass]="{
+        'f1-win': gameStatuses.connections === 'win',
+        'f1-lost': gameStatuses.connections === 'lost',
+      }"
+    >
+      <div class="f1-game-image">
+        <img src="connections.png" alt="Connections Game" />
+      </div>
+      <div class="f1-game-info">
+        <h3>Paddock1 Connections</h3>
+        <p>Can you guess the right connections for drivers, teams or tracks?</p>
+        <button class="f1-play-btn" routerLink="/play/connections">PLAY</button>
+      </div>
+    </div>
+
+    <div
+      class="f1-game-card"
+      [ngClass]="{
+        'f1-win': gameStatuses.guessTeams === 'win',
+        'f1-lost': gameStatuses.guessTeams === 'lost',
+      }"
+    >
+      <div class="f1-game-image">
+        <img src="guess-teams-1.png" alt="Connections Game" />
+      </div>
+      <div class="f1-game-info">
+        <h3>Paddock1 Guess Teams</h3>
+        <p>Can you guess the team and all the team members?</p>
+        <button class="f1-play-btn" routerLink="/play/guess-teams">PLAY</button>
+      </div>
+    </div>
+
+    <div
+      class="f1-game-card"
+      [ngClass]="{
+        'f1-win': gameStatuses.h2h === 'win',
+        'f1-lost': gameStatuses.h2h === 'lost',
+      }"
+    >
+      <div class="f1-game-image">
+        <img src="h2h.png" alt="h2h Game" />
+      </div>
+      <div class="f1-game-info">
+        <h3>Paddock1 Head To Head</h3>
+        <p>Can you guess the winner of a head to head comparison?</p>
+        <button class="f1-play-btn" routerLink="/play/h2h">PLAY</button>
+      </div>
+    </div>
+
+    <div
+      class="f1-game-card"
+      [ngClass]="{
+        'f1-win': gameStatuses.guessCareers === 'win',
+        'f1-lost': gameStatuses.guessCareers === 'lost',
+      }"
+    >
+      <div class="f1-game-image">
+        <img src="guess_careers.png" alt="Guess Driver Game" />
+      </div>
+      <div class="f1-game-info">
+        <h3>Paddock1 Guess Driver</h3>
+        <p>Can you guess the driver by his career teams?</p>
+        <button class="f1-play-btn" routerLink="/play/guess-careers">
+          PLAY
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="f1-game-card"
+      [ngClass]="{
+        'f1-win': gameStatuses.timeline === 'win',
+        'f1-lost': gameStatuses.timeline === 'lost',
+      }"
+    >
+      <div class="f1-game-image">
+        <img src="timeline.png" alt="Timeline Game" />
+      </div>
+      <div class="f1-game-info">
+        <h3>Paddock1 Timeline</h3>
+        <p>Place the given events on the correct order to win!</p>
+        <button class="f1-play-btn" routerLink="/play/timeline">PLAY</button>
+      </div>
+    </div>
+  </div>
+</div>

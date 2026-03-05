@@ -1,0 +1,14 @@
+@import "@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+.guess-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.guess-input {
+  flex: 1;
+  max-width: 400px;
+}

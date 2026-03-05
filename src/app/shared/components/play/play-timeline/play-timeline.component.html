@@ -1,0 +1,87 @@
+<app-timeline-selector
+  *ngIf="!gameMode && timelineId"
+  (guessSelected)="startGame($event)"
+></app-timeline-selector>
+
+<app-game-not-found
+  *ngIf="loaded && !timelineId"
+  [gameName]="'timeline'"
+></app-game-not-found>
+
+<div class="timeline-play-container" *ngIf="gameMode && timelineId">
+  <!--<div style="display: flex; align-items: center; justify-content: center">
+    <p style="font-size: 12px; width: 50%; text-align: center">
+      Hey! We are currently testing this game as it's brand new on the site. If
+      you found any error, please have patience and let us know about it so we
+      can fix it as soon as posible. Thanks for playing our game!
+    </p>
+  </div>-->
+  <h2 class="title">Play Timeline</h2>
+
+  <div class="slots">
+    <div
+      class="slot"
+      *ngFor="let ev of placedEvents; let i = index"
+      [ngClass]="{
+        correct: gameOver && ev && correctOrder[i].id === ev.id,
+        incorrect: gameOver && ev && correctOrder[i].id !== ev.id,
+      }"
+      (click)="onSelectSlot(i)"
+      (drop)="!isMobile && !gameOver && onDrop($event, i)"
+      (dragover)="!isMobile && !gameOver && allowDrop($event, i)"
+      [draggable]="!gameOver"
+    >
+      <ng-container *ngIf="ev; else empty">
+        <img
+          [src]="getImageUrl(ev.image)"
+          alt="Event Image"
+          class="slot-img"
+          [class.selected]="selectedEvent?.id === ev.id"
+          [draggable]="!isMobile && !gameOver"
+          (dragstart)="!isMobile && !gameOver && onDragStart($event, ev, i)"
+        />
+      </ng-container>
+      <ng-template #empty>
+        <span class="placeholder">Empty slot</span>
+      </ng-template>
+    </div>
+  </div>
+
+  <div *ngIf="gameOver && !gameWon" class="correct-order">
+    <h4>Correct Order:</h4>
+    <ul>
+      <li *ngFor="let ev of correctOrder">
+        <img [src]="getImageUrl(ev.image)" class="order-img" />
+      </li>
+    </ul>
+  </div>
+  <div
+    class="events-pool"
+    (drop)="!gameOver && onDropPool($event)"
+    (dragover)="!gameOver && allowDropPool($event)"
+    (draggable)="(!gameOver)"
+  >
+    <div
+      class="event-card"
+      *ngFor="let ev of shuffledEvents"
+      [draggable]="!isMobile"
+      (dragstart)="!isMobile && onDragStart($event, ev)"
+      (click)="onSelectEvent(ev)"
+      [class.selected]="selectedEvent?.id === ev.id"
+    >
+      <img [src]="getImageUrl(ev.image)" alt="Event Image" class="event-img" />
+      <div class="event-desc">{{ ev.description }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="buttons" *ngIf="gameMode && timelineId && !gameOver">
+  <button class="btn verify" (click)="verifyOrder()">Verify Order</button>
+
+  <button class="btn reset" (click)="resetBoard()">Reset</button>
+</div>
+
+<div *ngIf="gameOver" class="result">
+  <app-game-won *ngIf="gameWon" style="color: white"></app-game-won>
+  <app-game-lost *ngIf="!gameWon" style="color: white"></app-game-lost>
+</div>

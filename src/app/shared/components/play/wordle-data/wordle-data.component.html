@@ -1,0 +1,56 @@
+<app-wordle-start-game
+  *ngIf="word !== '' && !gameStarted"
+  (guessSelected)="startGameFirstTime($event)"
+></app-wordle-start-game>
+
+<app-game-not-found
+  *ngIf="loaded && word === ''"
+  [gameName]="'wordle'"
+></app-game-not-found>
+
+<div class="wordle-container" *ngIf="gameStarted && word !== ''">
+  <h2>GUESS THE DRIVER</h2>
+  <div class="grid">
+    <div class="row" *ngFor="let row of resultGrid; let rowIndex = index">
+      <div
+        class="cell"
+        *ngFor="let cell of row; let colIndex = index"
+        [ngClass]="[
+          cell.status,
+          gameOver && rowIndex === currentRowIndex
+            ? getFinalClass(colIndex)
+            : '',
+        ]"
+        [style.transitionDelay]="
+          gameOver && rowIndex === currentRowIndex ? getDelay(colIndex) : '0s'
+        "
+      >
+        {{ cell.letter }}
+      </div>
+    </div>
+  </div>
+
+  <div class="final-word">
+    <div *ngIf="gameOver && showFinalMessage">
+      <p *ngIf="gameWin">Green flag! You've won today's paddock1 wordle</p>
+      <p *ngIf="!gameWin">Red flag! We're sorry, but you lost today.</p>
+      <p>
+        Today's wordle answer is
+        <strong class="drivername">{{ word.toUpperCase() }}</strong>
+      </p>
+    </div>
+  </div>
+
+  <div class="keyboard">
+    <div class="key-row" *ngFor="let row of keyboardLayout">
+      <button
+        class="key"
+        *ngFor="let key of row"
+        [ngClass]="letterStates[key] || ''"
+        (click)="handleKeyPress(key)"
+      >
+        {{ key }}
+      </button>
+    </div>
+  </div>
+</div>

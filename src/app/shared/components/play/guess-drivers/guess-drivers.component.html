@@ -1,0 +1,121 @@
+<app-guess-drivers-selector
+  *ngIf="gamedata?.id && !gameStarted"
+  (guessSelected)="startGameFirstTime($event)"
+></app-guess-drivers-selector>
+
+<app-game-not-found
+  *ngIf="loaded && !gamedata?.id"
+  [gameName]="'Guess Driver'"
+></app-game-not-found>
+
+<div class="guess-drivers-container" *ngIf="gamedata && gameStarted">
+  <h1 class="game-title">I played with these teams. Who am I?</h1>
+
+  <div class="driver-section">
+    <div
+      class="driver-wrapper"
+      [class.correct-wrapper]="gameWon"
+      [class.surrender-wrapper]="gameLost && !gameWon"
+    >
+      <ng-container *ngIf="driverInfo; else driverPlaceholder">
+        <img
+          [src]="getDriverImage(driverInfo.image)"
+          alt="Driver Image"
+          class="driver-img fade-in"
+          onerror="
+            this.src = 'https://cdn-icons-png.flaticon.com/512/3048/3048122.png'
+          "
+        />
+        <div class="driver-name">
+          {{ driverInfo.firstname }} {{ driverInfo.lastname }}
+        </div>
+      </ng-container>
+      <ng-template #driverPlaceholder>
+        <div class="driver-placeholder">
+          <div class="driver-silhouette"></div>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="teams-section">
+      <div class="teams-row">
+        <ng-container *ngFor="let team of allTeamSlots; let i = index">
+          <div
+            class="team-wrapper"
+            [class.revealed]="i < revealedTeams.length || gameWon || gameLost"
+            [class.game-over]="gameWon || gameLost"
+            [class.revealed-during-game]="
+              i < revealedTeamsBeforeGameOver.length
+            "
+          >
+            <ng-container
+              *ngIf="
+                i < revealedTeams.length || gameWon || gameLost;
+                else teamPlaceholder
+              "
+            >
+              <img
+                [src]="getTeamLogoSrc(i)"
+                alt="Team Logo"
+                class="team-logo fade-in"
+                onerror="
+                  this.src =
+                    'https://cdn-icons-png.flaticon.com/512/4974/4974985.png'
+                "
+              />
+              <div class="team-name">
+                {{ getTeamName(i) }}
+              </div>
+            </ng-container>
+            <ng-template #teamPlaceholder>
+              <div class="team-placeholder">
+                <div class="team-number">{{ i + 1 }}</div>
+              </div>
+            </ng-template>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="hints-section" *ngIf="!gameWon && !gameLost">
+      <button
+        class="hint-button"
+        [disabled]="hintsRemaining <= 0"
+        (click)="useHint()"
+      >
+        Hint ({{ hintsRemaining }})
+      </button>
+
+      <div class="hints-display" *ngIf="hints.nationality || hints.teamYears">
+        <div class="hint-item" *ngIf="hints.nationality">
+          <span class="hint-label">Nationality:</span>
+          <span class="hint-value">{{ hints.nationality }}</span>
+        </div>
+        <div class="hint-item" *ngIf="hints.teamYears">
+          <span class="hint-label">Team Years:</span>
+          <span class="hint-value"
+            >{{ hints.teamYears.start_year }} -
+            {{ hints.teamYears.end_year }}</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="input-section" *ngIf="!gameWon && !gameLost">
+      <input
+        type="text"
+        [(ngModel)]="driverGuess"
+        (input)="onInputChange($event)"
+        placeholder="Guess Driver"
+        class="driver-input"
+      />
+      <button class="submit-button" (click)="submitGuess()">Submit</button>
+    </div>
+  </div>
+</div>
+
+<app-game-won *ngIf="gameWon" [gameName]="'Guess Driver'"></app-game-won>
+<app-game-lost
+  *ngIf="gameLost && !gameWon"
+  [gameName]="'Guess Driver'"
+></app-game-lost>

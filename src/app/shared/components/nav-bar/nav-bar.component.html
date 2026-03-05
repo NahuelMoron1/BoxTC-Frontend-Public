@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <div class="logo"><img src="paddock1-logo1.png" alt="" /></div>
+  <ul class="list">
+    <li routerLink="/">Games</li>
+    <li routerLink="/news">News</li>
+    <li routerLink="/about-us">About us</li>
+    <li routerLink="/contact-us">Contact</li>
+    <li *ngIf="user?.status === 'active'" (click)="goToCreate()">
+      Create Article
+    </li>
+    <li
+      *ngIf="user?.status === 'active'"
+      routerLink="/my-articles/{{ user?.id }}"
+    >
+      My Articles
+    </li>
+  </ul>
+  <app-follow-us class="follow-us-container"></app-follow-us>
+</nav>

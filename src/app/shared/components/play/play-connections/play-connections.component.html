@@ -1,0 +1,66 @@
+<app-connections-mode-selector
+  *ngIf="!gameStarted && gameID"
+  (guessSelected)="startGame($event)"
+></app-connections-mode-selector>
+
+<app-game-not-found
+  *ngIf="loaded && !gameID"
+  [gameName]="'connections'"
+></app-game-not-found>
+
+<div class="containsAll" *ngIf="gameStarted && gameID">
+  <div class="main-title">
+    <h1>PADDOCK1 Connections</h1>
+    <p class="f1-subtitle">Find the right connections</p>
+  </div>
+
+  <!-- Bloques de grupos acertados -->
+  <div class="all-guessed-container">
+    <div class="guessed-groups" *ngIf="guessedGroups.length > 0">
+      <div class="group-row" *ngFor="let group of guessedGroups">
+        <div class="group-title">{{ group.title }}</div>
+        <div class="group-results">
+          <div class="group-result-card" *ngFor="let r of group.results">
+            <img [src]="getEntityImage(r)" alt="{{ r.name }}" />
+            <div class="name">{{ r.name }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grilla de resultados restantes -->
+  <div class="all-grid-container">
+    <div class="grid-container">
+      <div
+        class="result-card"
+        *ngFor="let r of remainingResults"
+        [class.selected]="selected.includes(r.id)"
+        (click)="toggleSelect(r.id)"
+      >
+        <img [src]="getEntityImage(r)" alt="{{ r.name }}" />
+        <div class="name">{{ r.name }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botones -->
+  <div class="controls" *ngIf="!gameOver">
+    <button (click)="submitSelection()" [disabled]="selected.length !== 4">
+      Submit
+    </button>
+    <button (click)="clearSelection()">Clear</button>
+  </div>
+
+  <!-- Feedback -->
+  <div class="feedback" *ngIf="feedback">
+    {{ feedback }}
+  </div>
+
+  <div class="gameOver" *ngIf="gameOver">
+    <div class="gameOverComponents">
+      <app-game-won *ngIf="gameWon"></app-game-won>
+      <app-game-lost *ngIf="gameOver && !gameWon"></app-game-lost>
+    </div>
+  </div>
+</div>

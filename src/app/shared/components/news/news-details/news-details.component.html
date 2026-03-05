@@ -1,0 +1,21 @@
+<div class="detail-container" *ngIf="article">
+  <img *ngIf="article.image" [src]="getImage(article.image)" alt="News image" />
+  <h1 class="title">{{ article.title }}</h1>
+  <p class="meta">
+    By {{ article.author }} • {{ formatCustomDate(article.date) }}
+  </p>
+  <div class="full-text">
+    {{ article.text }}
+  </div>
+
+  <div class="social-share">
+    <p>Share this article:</p>
+    <div class="icons">
+      <i class="fab fa-twitter fa-2x"></i>
+      <i class="fab fa-facebook-f fa-2x"></i>
+      <i class="fab fa-instagram fa-2x"></i>
+      <i class="fab fa-whatsapp fa-2x"></i>
+    </div>
+  </div>
+  <app-news></app-news>
+</div>

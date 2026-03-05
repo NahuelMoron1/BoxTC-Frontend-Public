@@ -1,0 +1,18 @@
+<div class="guess-container">
+  <mat-form-field class="guess-input">
+    <input
+      matInput
+      [formControl]="guessControl"
+      [matAutocomplete]="auto"
+      placeholder="Type your guess"
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="onSelect($event)"
+    >
+      <mat-option *ngFor="let option of filteredOptions" [value]="option.name">
+        {{ option.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

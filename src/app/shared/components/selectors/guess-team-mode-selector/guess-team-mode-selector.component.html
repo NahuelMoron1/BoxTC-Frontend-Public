@@ -1,0 +1,37 @@
+<div class="f1-mode-wrapper">
+  <div class="f1-mode-selector">
+    <h2 class="f1-mode-title">Paddock1 Guess Team</h2>
+    <p class="f1-mode-description">
+      Choose your game mode and test your motorsport instincts.<br />
+      Will you guess every member of the team? <br> <br>
+      REMINDER: For the team principal, you need to guess the name by typing it in the input field. You can guess it by typing either firstname, lastname or both. <br> <br>
+      It is important to notice that you need to choose the driver/team and not guess by typing the name in the input field.
+    </p>
+
+    <div class="f1-mode-buttons">
+      <button
+        (click)="gameMode = 'normal'"
+        class="f1-mode-btn soft"
+        [class.selected]="gameMode === 'normal'"
+      >
+        Normal Mode
+      </button>
+      <button
+        (click)="gameMode = 'byOne'"
+        class="f1-mode-btn ultra"
+        [class.selected]="gameMode === 'byOne'"
+      >
+        One-by-One Mode
+      </button>
+    </div>
+
+    <button class="f1-start-btn" (click)="startGame()">Start Game</button>
+  </div>
+
+  <div class="f1-mode-image-placeholder">
+    <!-- Acá podés poner la imagen del impostor -->
+    <div class="f1-image-box">
+      <img src="guess-teams-2.png" alt="" />
+    </div>
+  </div>
+</div>

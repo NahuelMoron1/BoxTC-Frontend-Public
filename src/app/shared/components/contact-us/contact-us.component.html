@@ -1,0 +1,40 @@
+<div class="contact-container">
+  <h1 class="section-title">Contact Us</h1>
+  <p class="subtitle">
+    Reach out to PADDOCK1 — whether you want to publish an article, report an
+    issue, or just say hello.
+  </p>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form-grid">
+    <div class="form-row">
+      <input type="text" formControlName="firstName" placeholder="First Name" />
+      <input type="text" formControlName="lastName" placeholder="Last Name" />
+    </div>
+
+    <div class="form-row">
+      <input type="email" formControlName="email" placeholder="Email" />
+      <input
+        type="text"
+        formControlName="phone"
+        placeholder="Phone (optional)"
+      />
+    </div>
+
+    <div class="form-row">
+      <select formControlName="reason">
+        <option value="" disabled selected>Select reason</option>
+        <option value="article">Submit an article</option>
+        <option value="bug">Report a bug</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <textarea
+      formControlName="message"
+      rows="6"
+      placeholder="Write your message here..."
+    ></textarea>
+
+    <button type="submit" [disabled]="!contactForm.valid">Send Message</button>
+  </form>
+</div>

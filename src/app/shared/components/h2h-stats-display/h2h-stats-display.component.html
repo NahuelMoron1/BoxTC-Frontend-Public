@@ -1,0 +1,93 @@
+<div class="stats-container">
+  <div
+    *ngFor="let stat of stats"
+    class="stats-row"
+    [ngClass]="getRowClass(stat)"
+  >
+    <div
+      class="driver-stats"
+      [ngClass]="getStatClass(stat, true)"
+      (click)="selectStat(stat.type, gameData?.Driver1?.id || '')"
+    >
+      <div class="value-container" *ngIf="stat.revealed">
+        <span class="value">{{ stat.driver1Value }}</span>
+        <span
+          class="selection-result"
+          *ngIf="wasSelected(stat, gameData?.Driver1?.id || '')"
+        >
+          {{
+            wasCorrect(stat, gameData?.Driver1?.id || "")
+              ? "You selected correct"
+              : "You selected wrong"
+          }}
+        </span>
+      </div>
+      <div
+        class="question-container"
+        [class.selected]="
+          !stat.revealed &&
+          selectedStat?.type === stat.type &&
+          selectedStat?.driverId === gameData?.Driver1?.id
+        "
+        *ngIf="!stat.revealed"
+      >
+        <span class="value question-mark">?</span>
+        <span class="select-text">{{
+          selectedStat?.type === stat.type &&
+          selectedStat?.driverId === gameData?.Driver1?.id
+            ? "SELECTED"
+            : "SELECT"
+        }}</span>
+      </div>
+    </div>
+
+    <div class="stat-label">{{ stat.label }}</div>
+
+    <div
+      class="driver-stats"
+      [ngClass]="getStatClass(stat, false)"
+      (click)="selectStat(stat.type, gameData?.Driver2?.id || '')"
+    >
+      <div class="value-container" *ngIf="stat.revealed">
+        <span class="value">{{ stat.driver2Value }}</span>
+        <span
+          class="selection-result"
+          *ngIf="wasSelected(stat, gameData?.Driver2?.id || '')"
+        >
+          {{
+            wasCorrect(stat, gameData?.Driver2?.id || "")
+              ? "You selected correct"
+              : "You selected wrong"
+          }}
+        </span>
+      </div>
+      <div
+        class="question-container"
+        [class.selected]="
+          !stat.revealed &&
+          selectedStat?.type === stat.type &&
+          selectedStat?.driverId === gameData?.Driver2?.id
+        "
+        *ngIf="!stat.revealed"
+      >
+        <span class="value question-mark">?</span>
+        <span class="select-text">{{
+          selectedStat?.type === stat.type &&
+          selectedStat?.driverId === gameData?.Driver2?.id
+            ? "SELECTED"
+            : "SELECT"
+        }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="guess-button-container" *ngIf="!gameOver">
+    <button
+      class="guess-button"
+      [disabled]="!selectedStat"
+      (click)="onSubmitGuess()"
+    >
+      GUESS
+    </button>
+  </div>
+</div>

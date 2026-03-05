@@ -1,0 +1,116 @@
+.sky-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0f0f0f, #1c1c1c);
+  font-family: "Orbitron", sans-serif;
+  color: #fff;
+}
+
+.sky-panel {
+  background: linear-gradient(135deg, #141414, #1f1f1f);
+  border: 1px solid #ff1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 30, 30, 0.4);
+  width: 70vh;
+  padding: 2rem;
+}
+
+.sky-panel-header h2 {
+  font-size: 1.6rem;
+  color: #ff1e1e;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.sky-panel-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.sky-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.sky-form-group label {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 0.4rem;
+}
+
+.sky-form-control {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  max-width: 30vh;
+}
+
+.sky-form-control::placeholder {
+  color: #666;
+}
+
+.sky-form-control:focus {
+  outline: none;
+  border-color: #ff1e1e;
+  box-shadow: 0 0 8px rgba(255, 30, 30, 0.6);
+}
+
+/* Botón mostrar/ocultar contraseña */
+.toggleButton {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #ff1e1e;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.toggleButton:hover {
+  color: #ff3b3b;
+}
+
+/* Botón principal */
+.sky-btn {
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: "Orbitron", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  max-width: fit-content;
+}
+
+.sky-btn-primary {
+  background-color: #ff1e1e;
+  border: none;
+  color: #fff;
+}
+
+.sky-btn-primary:hover {
+  background-color: #ff3b3b;
+  transform: scale(1.05);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .sky-panel {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .sky-panel-header h2 {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,23 @@
+.main-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  gap: 20px;
+  background-color: #0b0e14; /* Color oscuro de tu web */
+}
+
+.ad-sidebar {
+  width: 160px;
+  min-width: 160px;
+  height: 600px;
+  position: sticky;
+  top: 80px; /* Para que no tape el Nav Bar */
+  z-index: 10;
+}
+
+.game-content {
+  flex: 0 1 1000px; /* No deja que el juego crezca más de 1000px */
+  margin: 0 auto;
+}

@@ -1,0 +1,25 @@
+<!-- create-article.component.html -->
+<div class="preview-wrapper">
+  <h2 class="section-title">🔍 Live Preview</h2>
+
+  <div class="detail-container">
+    <img *ngIf="selectedFile" [src]="getImagePreview()" alt="Preview image" />
+    <h1 class="title">{{ articleForm.value.title }}</h1>
+    <p class="meta">
+      By {{ articleForm.value.author }} • {{ articleForm.value.date }}
+    </p>
+    <div class="full-text">
+      {{ articleForm.value.text }}
+    </div>
+
+    <div class="social-share">
+      <p>Share this article:</p>
+      <div class="icons">
+        <i class="fab fa-twitter fa-2x"></i>
+        <i class="fab fa-facebook-f fa-2x"></i>
+        <i class="fab fa-instagram fa-2x"></i>
+        <i class="fab fa-whatsapp fa-2x"></i>
+      </div>
+    </div>
+  </div>
+</div>

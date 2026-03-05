@@ -1,0 +1,178 @@
+.detail-container {
+  max-width: 50vw;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+  border-radius: 12px;
+}
+
+/* Imagen */
+.image-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.image-dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: 100%;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    #0f0f0f,
+    #1c1c1c
+  ); /* 🔥 igual al fondo público */
+  box-shadow: 0 0 20px rgba(255, 7, 7, 0.857); /* 🔥 igual al detalle */
+  border: none;
+}
+
+.image-dropzone input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-dropzone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Título */
+.editable-input {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff1e1e;
+  background: none;
+  border: none;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-family: "Orbitron", sans-serif;
+}
+
+.editable-input::placeholder {
+  color: #555;
+}
+
+/* Autor y fecha */
+.editable-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.by-label {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.meta-input {
+  font-size: 0.9rem;
+  color: #aaa;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #444;
+  font-family: "Orbitron", sans-serif;
+}
+
+.meta-input.short {
+  width: 140px;
+}
+
+/* Texto */
+.full-text.editable-textarea {
+  font-size: 1rem;
+  color: #ddd;
+  background: none;
+  border: 1px solid #444;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 100%;
+  resize: vertical;
+  font-family: "Orbitron", sans-serif;
+  white-space: pre-line;
+}
+
+/* Botón */
+.save-box {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  background-color: #ff1e1e;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Orbitron", sans-serif;
+}
+
+button:hover {
+  background-color: #ff3b3b;
+}
+
+.summary-textarea {
+  font-size: 0.95rem;
+  color: #ccc;
+  background: none;
+  border: 1px solid #444;
+  padding: 0.75rem;
+  border-radius: 8px;
+  width: 100%;
+  resize: vertical;
+  font-family: "Orbitron", sans-serif;
+  margin-bottom: 1.5rem;
+}
+
+.saved-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.saved {
+  background-color: #00ff88;
+  color: #000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  font-family: "Orbitron", sans-serif;
+}
+
+.create-another {
+  background-color: #ff1e1e;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Orbitron", sans-serif;
+}
+
+.create-another:hover {
+  background-color: #ff3b3b;
+}
+
+.saveButton {
+  background-color: #45ff3bdf;
+  color: black;
+}

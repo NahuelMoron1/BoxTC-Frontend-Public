@@ -1,0 +1,49 @@
+<div class="sky-container">
+  <div class="sky-margin-top-xxl sky-margin-horizontal-xl">
+    <div class="sky-panel">
+      <div class="sky-panel-header">
+        <h2>JOURNALISTS LOGIN</h2>
+      </div>
+      <div class="sky-panel-body">
+        <div class="sky-form-group">
+          <label for="emailInp">Email</label>
+          <input
+            id="emailInp"
+            type="email"
+            class="sky-form-control"
+            placeholder="Ingrese su correo"
+          />
+        </div>
+
+        <div class="sky-form-group">
+          <label for="passwordInp">Password</label>
+          <div style="position: relative">
+            <input
+              id="passwordInp"
+              type="{{ passwordType }}"
+              class="sky-form-control"
+              placeholder="Ingrese su contraseña"
+              style="padding-right: 40px"
+            />
+            <button (click)="togglePassword()" class="toggleButton">
+              <span *ngIf="passwordType === 'text'"
+                ><i class="fa-solid fa-eye"></i
+              ></span>
+              <span *ngIf="passwordType === 'password'"
+                ><i class="fa-solid fa-eye-low-vision"></i
+              ></span>
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="sky-btn sky-btn-primary sky-margin-top-md"
+          (click)="login()"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

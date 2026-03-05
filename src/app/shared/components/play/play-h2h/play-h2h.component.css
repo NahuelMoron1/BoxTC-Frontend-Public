@@ -1,0 +1,85 @@
+.f1-game-container {
+  background-color: #0d0d0d;
+  color: #f0f0f0;
+  padding: 24px;
+  border-radius: 12px;
+  font-family: "f1BoldWeb";
+  max-width: 800px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+/* --- RESPONSIVE GUESS TEAM --- */
+@media (max-width: 1024px) {
+  .guess-play-container {
+    width: 95% !important;
+    height: auto;
+    margin: 1.5rem auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .f1-game-container {
+    width: 85%;
+  }
+  .guess-play-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .season-year {
+    font-size: 1.8rem;
+  }
+
+  .flag-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .driver-offset {
+    transform: translateY(0); /* Alineación vertical limpia */
+  }
+
+  .flag-wrapper,
+  .guess-input {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .flag-wrapper {
+    height: 130px;
+  }
+}
+
+/*@media (max-width: 768px) {
+  .f1-game-container {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .f1-game-container {
+    padding: 12px;
+  }
+}
+
+.f1-title {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: #ff2d55;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .f1-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .f1-title {
+    font-size: 18px;
+  }
+}
+*/

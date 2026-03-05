@@ -1,0 +1,112 @@
+<app-best10-mode-selector
+  *ngIf="!gameStarted && gamedata?.id"
+  (guessSelected)="startGameFirstTime($event)"
+></app-best10-mode-selector>
+
+<app-game-not-found
+  *ngIf="loaded && !gamedata?.id"
+  [gameName]="'top 10'"
+></app-game-not-found>
+
+<div class="top10-container" *ngIf="gamedata && gameStarted">
+  <h2 class="top10-title">{{ gamedata.title }}</h2>
+
+  <ul class="top10-list">
+    <li
+      class="top10-item"
+      *ngFor="let result of revealedResults; let i = index"
+      [ngClass]="{
+        revealed: !!result,
+        'revealed-animate': result && justRevealed.has(result.id),
+        correct: !!result && getStatus(result) === 'correct',
+        missed: !!result && getStatus(result) === 'missed',
+      }"
+    >
+      <div
+        class="position"
+        [ngClass]="{
+          revealed: !!result,
+          missedpos: !!result && getStatus(result, true) === 'missed-pos',
+        }"
+      >
+        {{ i + 1 }}
+      </div>
+
+      <!-- PILOTO -->
+      <ng-container *ngIf="result?.Driver; else checkTeamOrTrack">
+        <ng-container *ngIf="!!result || gameOver; else hiddenDriver">
+          <img class="flag-image" [src]="getImage(result)" [alt]="" />
+          <div class="driver-info">
+            <h3 class="driver-name">
+              {{ result.Driver?.firstname }} {{ result.Driver?.lastname }}
+            </h3>
+            <p class="driver-nationality">{{ result.Driver?.nationality }}</p>
+          </div>
+          <div class="driver-stat">
+            <span *ngIf="result.totalStat > 0">{{ result.totalStat }}</span>
+            <label>{{ gamedata.table?.toUpperCase() }}</label>
+          </div>
+        </ng-container>
+        <ng-template #hiddenDriver>
+          <div class="driver-empty"></div>
+        </ng-template>
+      </ng-container>
+
+      <!-- EQUIPO -->
+      <ng-template #checkTeamOrTrack>
+        <ng-container *ngIf="result?.Team; else renderTrack">
+          <ng-container *ngIf="!!result || gameOver; else hiddenTeam">
+            <img class="flag-image" [src]="getImage(result)" [alt]="" />
+            <div class="driver-info">
+              <h3 class="driver-name">{{ result.Team?.common_name }}</h3>
+              <p class="driver-nationality">{{ result.Team?.base }}</p>
+            </div>
+            <div class="driver-stat">
+              <span *ngIf="result.totalStat > 0">{{ result.totalStat }}</span>
+              <label>{{ gamedata.table?.toUpperCase() }}</label>
+            </div>
+          </ng-container>
+          <ng-template #hiddenTeam>
+            <div class="driver-empty"></div>
+          </ng-template>
+        </ng-container>
+
+        <!-- CIRCUITO -->
+        <ng-template #renderTrack>
+          <ng-container *ngIf="!!result || gameOver; else hiddenTrack">
+            <img class="flag-image" [src]="getImage(result)" [alt]="" />
+            <div class="driver-info">
+              <h3 class="driver-name">{{ result.Track?.track_name }}</h3>
+              <p class="driver-nationality">{{ result.Track?.country }}</p>
+            </div>
+            <div class="driver-stat">
+              <span *ngIf="result.totalStat > 0">{{ result.totalStat }}</span>
+              <label>{{ gamedata.table?.toUpperCase() }}</label>
+            </div>
+          </ng-container>
+          <ng-template #hiddenTrack>
+            <div class="driver-empty"></div>
+          </ng-template>
+        </ng-template>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div class="guess-box" *ngIf="!gameWon && !gameOver">
+    <app-guess-selector
+      [gameID]="gamedata.id"
+      [type]="gamedata.type"
+      (guessSelected)="handleGuess($event)"
+    ></app-guess-selector>
+    <app-surrender (surrender)="surrender()"></app-surrender>
+  </div>
+
+  <div class="gameOver">
+    <app-game-won *ngIf="gameOver && gameWon"></app-game-won>
+    <app-game-lost *ngIf="gameOver && !gameWon"></app-game-lost>
+  </div>
+
+  <div class="timer" *ngIf="timedMode && !gameOver && !gameWon">
+    ⏱️ Time left: {{ timeLeft }}s
+  </div>
+</div>

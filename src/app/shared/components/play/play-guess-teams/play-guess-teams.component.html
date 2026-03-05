@@ -1,0 +1,278 @@
+<app-guess-team-mode-selector
+  *ngIf="!gameMode && gamedata"
+  (guessSelected)="startGame($event)"
+></app-guess-team-mode-selector>
+
+<app-game-not-found
+  *ngIf="loaded && !gamedata?.id"
+  [gameName]="'Guess Team'"
+></app-game-not-found>
+
+<div class="guess-play-container" *ngIf="gamedata && gameMode">
+  <div class="season-year">
+    {{ gamedata.seasonYear }}
+  </div>
+
+  <div class="team-section">
+    <div
+      class="flag-wrapper"
+      [class.correct-wrapper]="
+        !!results.team && (!gameLost || !!selectedIds.team)
+      "
+      [class.surrender-wrapper]="
+        !!results.team && gameLost && !selectedIds.team
+      "
+    >
+      <ng-container *ngIf="results.team; else teamPlaceholder">
+        <img
+          [src]="getTeamsImage(results.team.image)"
+          alt="Team Image"
+          class="flag-img fade-in"
+        />
+      </ng-container>
+      <ng-template #teamPlaceholder>
+        <div class="flag-placeholder">?</div>
+      </ng-template>
+    </div>
+
+    <div class="input-group">
+      <input
+        id="team-input"
+        type="text"
+        [(ngModel)]="inputValues.team"
+        (input)="onInputChange($event, 'team')"
+        placeholder="Guess Team"
+        class="guess-input"
+        [class.correct]="!!results.team && (!gameLost || !!selectedIds.team)"
+        [class.surrender]="!!results.team && gameLost && !selectedIds.team"
+        [disabled]="!!results.team"
+      />
+
+      <ul
+        *ngIf="filteredOptions.length > 0 && activeField === 'team'"
+        class="options"
+      >
+        <li
+          *ngFor="let option of filteredOptions"
+          (click)="selectOption(option, 'team')"
+        >
+          {{ option.name }}
+        </li>
+      </ul>
+    </div>
+
+    <button
+      *ngIf="gameMode === 'byOne' && !results.team && !gameOver"
+      (click)="guess('team')"
+      class="guess-btn"
+    >
+      Guess Team
+    </button>
+  </div>
+
+  <div class="flag-row">
+    <div class="flag-block driver-offset">
+      <div
+        class="flag-wrapper"
+        [class.correct-wrapper]="
+          !!results.driver1 && (!gameLost || !!selectedIds.driver1)
+        "
+        [class.surrender-wrapper]="
+          !!results.driver1 && gameLost && !selectedIds.driver1
+        "
+      >
+        <ng-container *ngIf="results.driver1; else driver1Flag">
+          <img
+            [src]="
+              results.driver1 ? getMembersImage(results.driver1.image) : ''
+            "
+            alt="Driver 1 Image"
+            class="flag-img fade-in"
+          />
+        </ng-container>
+        <ng-template #driver1Flag>
+          <img
+            [src]="getImage(gamedata.driver1Flag)"
+            alt="Driver 1 Flag"
+            class="flag-img"
+          />
+        </ng-template>
+      </div>
+
+      <input
+        id="driver1-input"
+        type="text"
+        [(ngModel)]="inputValues.driver1"
+        (input)="onInputChange($event, 'driver1')"
+        placeholder="Guess Driver 1"
+        class="guess-input"
+        [class.correct]="
+          !!results.driver1 && (!gameLost || !!selectedIds.driver1)
+        "
+        [class.surrender]="
+          !!results.driver1 && gameLost && !selectedIds.driver1
+        "
+        [disabled]="!!results.driver1"
+      />
+
+      <ul
+        *ngIf="filteredOptions.length > 0 && activeField === 'driver1'"
+        class="options"
+      >
+        <li
+          *ngFor="let option of filteredOptions"
+          (click)="selectOption(option, 'driver1')"
+        >
+          {{ option.name }}
+        </li>
+      </ul>
+
+      <button
+        *ngIf="gameMode === 'byOne' && !results.driver1 && !gameOver"
+        (click)="guess('driver1')"
+        class="guess-btn"
+      >
+        Guess Driver 1
+      </button>
+    </div>
+
+    <div class="flag-block">
+      <div
+        class="flag-wrapper"
+        [class.correct-wrapper]="
+          !!results.tp && (!gameLost || !!selectedIds.tp)
+        "
+        [class.surrender-wrapper]="!!results.tp && gameLost && !selectedIds.tp"
+      >
+        <ng-container *ngIf="results.tp; else tpFlag">
+          <img
+            [src]="results.tp ? getImage(gamedata.tpFlag) : ''"
+            alt="Team principal image"
+            class="flag-img fade-in"
+          />
+        </ng-container>
+        <ng-template #tpFlag>
+          <img
+            [src]="getImage(gamedata.tpFlag)"
+            alt="Team principal flag"
+            class="flag-img"
+          />
+        </ng-template>
+      </div>
+
+      <input
+        id="tp-input"
+        type="text"
+        [(ngModel)]="inputValues.tp"
+        (input)="onInputChange($event, 'tp')"
+        placeholder="Guess Team Principal"
+        class="guess-input"
+        [class.correct]="!!results.tp && (!gameLost || !!selectedIds.tp)"
+        [class.surrender]="!!results.tp && gameLost && !selectedIds.tp"
+        [disabled]="!!results.tp"
+      />
+
+      <ul
+        *ngIf="filteredOptions.length > 0 && activeField === 'tp'"
+        class="options"
+      >
+        <li
+          *ngFor="let option of filteredOptions"
+          (click)="selectOption(option, 'tp')"
+        >
+          {{ option.name }}
+        </li>
+      </ul>
+
+      <button
+        *ngIf="gameMode === 'byOne' && !results.tp && !gameOver"
+        (click)="guess('tp')"
+        class="guess-btn"
+      >
+        Guess Principal
+      </button>
+    </div>
+
+    <div class="flag-block driver-offset">
+      <div
+        class="flag-wrapper"
+        [class.correct-wrapper]="
+          !!results.driver2 && (!gameLost || !!selectedIds.driver2)
+        "
+        [class.surrender-wrapper]="
+          !!results.driver2 && gameLost && !selectedIds.driver2
+        "
+      >
+        <ng-container *ngIf="results.driver2; else driver2Flag">
+          <img
+            [src]="
+              results.driver2 ? getMembersImage(results.driver2.image) : ''
+            "
+            alt="Driver 2 Image"
+            class="flag-img fade-in"
+          />
+        </ng-container>
+        <ng-template #driver2Flag>
+          <img
+            [src]="getImage(gamedata.driver2Flag)"
+            alt="Driver 2 Flag"
+            class="flag-img"
+          />
+        </ng-template>
+      </div>
+
+      <input
+        id="driver2-input"
+        type="text"
+        [(ngModel)]="inputValues.driver2"
+        (input)="onInputChange($event, 'driver2')"
+        placeholder="Guess Driver 2"
+        class="guess-input"
+        [class.correct]="
+          !!results.driver2 && (!gameLost || !!selectedIds.driver2)
+        "
+        [class.surrender]="
+          !!results.driver2 && gameLost && !selectedIds.driver2
+        "
+        [disabled]="!!results.driver2"
+      />
+
+      <ul
+        *ngIf="filteredOptions.length > 0 && activeField === 'driver2'"
+        class="options"
+      >
+        <li
+          *ngFor="let option of filteredOptions"
+          (click)="selectOption(option, 'driver2')"
+        >
+          {{ option.name }}
+        </li>
+      </ul>
+
+      <button
+        *ngIf="gameMode === 'byOne' && !results.driver2 && !gameOver"
+        (click)="guess('driver2')"
+        class="guess-btn"
+      >
+        Guess Driver 2
+      </button>
+    </div>
+  </div>
+
+  <div class="global-guess" *ngIf="gameMode === 'normal' && !gameOver">
+    <button (click)="guessAll()" class="guess-btn guess-btn-global">
+      Guess All
+    </button>
+  </div>
+
+  <app-surrender
+    (surrender)="surrender()"
+    class="surrender-button"
+    *ngIf="!gameOver"
+  ></app-surrender>
+
+  <div class="gameOver">
+    <app-game-won *ngIf="gameWon"></app-game-won>
+    <app-game-lost *ngIf="gameOver && !gameWon"></app-game-lost>
+  </div>
+</div>

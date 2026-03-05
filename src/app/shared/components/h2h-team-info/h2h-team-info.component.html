@@ -1,0 +1,24 @@
+<div class="team-info" *ngIf="gameData">
+  <div class="driver-info">
+    <img [src]="getImage(gameData.Driver1.image)" class="f1-image" />
+    <span class="firstname">
+      {{ gameData.Driver1.firstname.toUpperCase() }}
+    </span>
+    <span class="lastname">{{ gameData.Driver1.lastname.toUpperCase() }}</span>
+  </div>
+
+  <div class="team-info-logo">
+    <img [src]="getImage(gameData.Team.logo)" class="f1-image" />
+    <p>{{ gameData.Team.name.toUpperCase() }}</p>
+  </div>
+
+  <div class="driver-info">
+    <img [src]="getImage(gameData.Driver2.image)" class="f1-image" />
+
+    <span class="firstname">
+      {{ gameData.Driver2.firstname.toUpperCase() }}
+    </span>
+
+    <span class="lastname">{{ gameData.Driver2.lastname.toUpperCase() }}</span>
+  </div>
+</div>

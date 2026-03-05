@@ -1,0 +1,290 @@
+.about-container {
+  max-width: 60vw;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.hero-title {
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: "f1BoldWeb";
+  color: #e10600; /*rgb(226, 32, 32);*/
+  letter-spacing: 3px;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #dcdcdc;
+  max-width: 700px;
+  margin: 0 auto 1rem;
+  line-height: 1.6;
+}
+
+.hero-highlights {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.chip {
+  border: 1px solid #ff1e1e;
+  color: #ff1e1e;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+/* Divider */
+.divider {
+  border: none;
+  border-top: 1px solid #292929;
+  margin: 2rem 0;
+}
+
+/* Games */
+.section-title {
+  font-size: 2rem;
+  color: #ff1e1e;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.game-card {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.25rem;
+  background-color: #1a1a1a;
+  border: 1px solid #ff1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 30, 30, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-3px);
+}
+
+.image-wrap img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: contain;
+  border-right: 1px solid #ff1e1e;
+}
+
+.game-content {
+  padding: 1rem 1.25rem;
+}
+
+.game-title {
+  font-size: 1.6rem;
+  color: #ff3b3b;
+  text-transform: uppercase;
+}
+
+.game-tagline {
+  font-size: 1rem;
+  color: #cfcfcf;
+}
+
+.game-description {
+  font-size: 0.95rem;
+  color: #d0d0d0;
+  line-height: 1.6;
+}
+
+.howto-title {
+  font-size: 1rem;
+  color: #ff1e1e;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.howto-list {
+  list-style: none;
+  padding: 0;
+}
+
+.howto-list li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.4rem;
+  color: #cfcfcf;
+}
+
+.howto-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #ff1e1e;
+}
+
+/* News */
+.news-wrap {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 1.5rem;
+  background-color: #1a1a1a;
+  border: 1px solid #ff1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 30, 30, 0.25);
+  overflow: hidden;
+}
+
+.news-media img {
+  width: 100%;
+  min-height: 240px;
+}
+
+/* 📲 Tablet */
+@media (max-width: 1024px) {
+  .about-container {
+    max-width: 80vw;
+    padding: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .game-card {
+    grid-template-columns: 240px 1fr;
+    gap: 1rem;
+  }
+
+  .game-title {
+    font-size: 1.4rem;
+  }
+
+  .game-description {
+    font-size: 0.9rem;
+  }
+
+  .news-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .news-media img {
+    min-height: 200px;
+    object-fit: contain; /* asegura que se vea completa */
+  }
+}
+
+/* 📱 Mobile */
+@media (max-width: 640px) {
+  .about-container {
+    max-width: 95vw;
+    padding: 1rem;
+  }
+
+  .hero-title {
+    font-size: 26px;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .chip {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .games-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .game-card {
+    grid-template-columns: 1fr;
+    border-radius: 8px;
+  }
+
+  .image-wrap img {
+    min-height: auto;
+    height: auto;
+    object-fit: contain; /* evita recortes en mobile */
+    border-right: none;
+    border-bottom: 1px solid #ff1e1e;
+  }
+
+  .game-title {
+    font-size: 1.2rem;
+  }
+
+  .game-tagline {
+    font-size: 0.9rem;
+  }
+
+  .game-description {
+    font-size: 0.85rem;
+  }
+
+  .howto-title {
+    font-size: 0.9rem;
+  }
+
+  .howto-list li {
+    font-size: 0.85rem;
+  }
+
+  .news-wrap {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .news-media img {
+    min-height: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .news-description {
+    font-size: 0.9rem;
+  }
+
+  .invite p {
+    font-size: 0.85rem;
+  }
+
+  .invite-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

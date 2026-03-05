@@ -1,0 +1,42 @@
+<div class="news-container">
+  <h1 class="section-title">📰 Motorsport News</h1>
+
+  <div *ngIf="articles && articles.length > 0; else noNews" class="grid">
+    <div
+      class="news-card"
+      *ngFor="let article of articles"
+      routerLink="/news/{{ article.id }}"
+    >
+      <img
+        *ngIf="article.image"
+        [src]="getImage(article.image)"
+        alt="News image"
+      />
+      <div class="news-content">
+        <h2>{{ article.title }}</h2>
+
+        <div class="bottom-block">
+          <p class="summary">{{ article.summary }}</p>
+          <div class="meta">
+            <span *ngIf="article.author">By {{ article.author }}</span>
+            <span *ngIf="article.date"
+              >• {{ formatCustomDate(article.date) }}</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons" *ngIf="userID === article.userID">
+        <button routerLink="/edit-article/{{ article.id }}">Edit</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noNews>
+    <div class="no-news-box">
+      <p>🚫 No news articles available at the moment.</p>
+    </div>
+  </ng-template>
+
+  <app-contributors *ngIf="!userID"></app-contributors>
+</div>

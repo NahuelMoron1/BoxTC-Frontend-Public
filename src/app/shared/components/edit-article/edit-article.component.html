@@ -1,0 +1,51 @@
+<div class="detail-container" *ngIf="article">
+  <!-- Imagen editable con espacio reservado -->
+  <div class="image-wrapper">
+    <label class="image-dropzone">
+      <span *ngIf="!imagePreview">📷 Click to upload image</span>
+      <input type="file" (change)="onFileSelected($event)" />
+      <img *ngIf="imagePreview" [src]="imagePreview" alt="Preview image" />
+    </label>
+  </div>
+
+  <!-- Título editable -->
+  <input
+    type="text"
+    [(ngModel)]="article.title"
+    placeholder="Article Title"
+    class="title editable-input"
+  />
+
+  <!-- Autor y fecha -->
+  <div class="meta editable-meta">
+    <span class="by-label">By</span>
+    <input
+      type="text"
+      [(ngModel)]="article.author"
+      placeholder="Author"
+      class="meta-input short"
+    />
+    <input type="date" [(ngModel)]="article.date" class="meta-input short" />
+  </div>
+
+  <textarea
+    [(ngModel)]="article.summary"
+    rows="3"
+    placeholder="Short summary of the article..."
+    class="summary-textarea"
+  ></textarea>
+
+  <!-- Texto completo -->
+  <textarea
+    [(ngModel)]="article.text"
+    rows="10"
+    placeholder="Write your article here..."
+    class="full-text editable-textarea"
+  ></textarea>
+
+  <!-- Botón de guardar -->
+  <div class="save-box">
+    <button class="saveButton" (click)="submitArticle()">Save Edit</button>
+    <button *ngIf="article" (click)="deleteArticle()">Delete Article</button>
+  </div>
+</div>

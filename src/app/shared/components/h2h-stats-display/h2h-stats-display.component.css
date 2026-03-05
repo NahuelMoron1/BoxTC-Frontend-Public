@@ -1,0 +1,286 @@
+.stats-container {
+  font-family: "f1BoldWeb", sans-serif;
+  color: white;
+  background-color: #0d0d0d;
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid #333;
+  flex-wrap: wrap;
+}
+
+.header {
+  font-weight: bold;
+  font-size: 18px;
+  border-bottom: 2px solid #ff2d55;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+.driver-stats {
+  flex: 1;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .driver-stats {
+    font-size: 24px;
+    padding: 6px;
+  }
+}
+
+.driver-stats:hover .question-mark {
+  color: #ff2d55;
+  transform: scale(1.1);
+}
+
+.stat-label {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .stat-label {
+    font-size: 14px;
+    min-width: 100%;
+    margin-bottom: 5px;
+  }
+}
+
+.value-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.value {
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.selection-result {
+  font-size: 9px;
+  margin-top: 2px;
+  font-weight: normal;
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .selection-result {
+    font-size: 8px;
+  }
+}
+
+.question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.question-mark {
+  color: #888;
+  font-size: 32px;
+  margin-bottom: 3px;
+}
+
+@media (max-width: 768px) {
+  .question-mark {
+    font-size: 24px;
+  }
+}
+
+.select-text {
+  font-size: 10px;
+  color: #888;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+@media (max-width: 480px) {
+  .select-text {
+    font-size: 8px;
+  }
+}
+
+.driver-stats:hover .select-text {
+  opacity: 1;
+}
+
+.selected {
+  color: #ff2d55;
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+.selected .question-mark {
+  color: #ff2d55;
+}
+
+.selected .select-text {
+  color: #ff2d55;
+  opacity: 1;
+}
+
+.row-correct {
+  background-color: rgba(76, 175, 80, 0.15);
+  border-radius: 6px;
+}
+
+.row-incorrect {
+  background-color: rgba(244, 67, 54, 0.15);
+  border-radius: 6px;
+}
+
+.correct {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.incorrect {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.guess-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.guess-button {
+  background-color: #ff2d55;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "f1BoldWeb", sans-serif;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .guess-button {
+    padding: 8px 20px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+.guess-button:hover {
+  background-color: #e01c45;
+  transform: scale(1.05);
+}
+
+.guess-button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- H2H RESPONSIVE FIXES --- */
+
+@media (max-width: 768px) {
+  .f1-game-container,
+  .stats-container {
+    width: 92% !important;
+    padding: 12px;
+    margin: 10px auto;
+  }
+
+  .stats-row {
+    flex-wrap: wrap; /* Permite que la etiqueta salte arriba */
+    padding: 12px 0;
+    gap: 8px;
+  }
+
+  .stat-label {
+    order: -1; /* Mueve el nombre de la estadística (ej: "PODIUMS") arriba */
+    min-width: 100%;
+    font-size: 13px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 0;
+    border-radius: 4px;
+  }
+
+  .driver-stats {
+    flex: 1; /* Los dos conductores comparten el ancho 50/50 */
+    font-size: 22px;
+    min-width: 0; /* Evita desbordes de texto */
+  }
+
+  .question-mark {
+    font-size: 22px;
+  }
+
+  .select-text {
+    opacity: 1; /* En móviles mostramos el texto siempre ya que no hay 'hover' */
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .f1-title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .driver-stats {
+    font-size: 18px;
+  }
+
+  .value {
+    font-size: 20px;
+  }
+
+  .selection-result {
+    font-size: 8px;
+    line-height: 1;
+  }
+
+  .guess-button {
+    width: 100%;
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+/* Fix para evitar que el contenedor se estire por el padding */
+.f1-game-container,
+.stats-container {
+  box-sizing: border-box;
+}
