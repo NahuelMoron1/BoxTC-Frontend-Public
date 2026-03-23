@@ -4,14 +4,15 @@
   background: #0d0d0d;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 30, 30, 0.4);
+  box-shadow: 0 0 20px #c0e600;
   color: #dcecfb;
   font-family: "F1-Regular", sans-serif;
 }
 
 .title {
   text-align: center;
-  color: #ff1e1e;
+  color: #c0e600; /* verde del logo */
+  text-shadow: 0 0 2px #647800;
   margin-bottom: 1.5rem;
 }
 

@@ -1,5 +1,5 @@
 .f1-menu-container {
-  background-color: #0d0d0d;
+  background-color: #0a1424; /* azul oscuro del body */
   color: #f0f0f0;
   padding: 40px 20px;
   font-family: "Orbitron", sans-serif;
@@ -13,7 +13,8 @@
 .f1-menu-title {
   font-size: 32px;
   margin-bottom: 10px;
-  color: #ff2d55;
+  color: #c0e600; /* verde del logo */
+  text-shadow: 0 0 2px #7e9700; /* glow racing */
 }
 
 .f1-menu-subtitle {
@@ -25,7 +26,6 @@
 .f1-game-grid {
   display: grid;
   width: fit-content;
-  /*grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));*/
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   justify-items: center;
@@ -42,8 +42,9 @@
 }
 
 .f1-game-card:hover {
-  border-color: #00f0ff;
+  border-color: #c0e600; /* verde del logo */
   transform: scale(1.03);
+  box-shadow: 0 0 12px #c0e600;
 }
 
 .f1-game-image img {
@@ -70,8 +71,8 @@
 }
 
 .f1-play-btn {
-  background-color: #ff2d55;
-  color: white;
+  background-color: #c0e600; /* verde del logo */
+  color: #0a1424; /* contraste oscuro */
   border: none;
   padding: 8px 16px;
   font-weight: bold;
@@ -81,35 +82,33 @@
 }
 
 .f1-play-btn:hover {
-  background-color: #ff4d75;
+  background-color: #d4ff33; /* tono más claro del verde */
+  box-shadow: 0 0 10px #c0e600;
 }
 
 .f1-win {
-  border-color: #00ff88;
-  background-color: #002f24; /* tono oscuro del verde */
-  box-shadow: 0 0 12px #00ff88;
+  border-color: #c0e600;
+  background-color: #1a2600; /* tono oscuro del verde */
+  box-shadow: 0 0 12px #c0e600;
+  animation: pulseWin 2s infinite;
 }
 
 .f1-lost {
   border-color: #ff2d55;
-  background-color: #2a0a14; /* tono oscuro del rojo */
+  background-color: #2a0a14;
   box-shadow: 0 0 12px #ff2d55;
 }
 
 @keyframes pulseWin {
   0% {
-    box-shadow: 0 0 8px #00ff88;
+    box-shadow: 0 0 8px #c0e600;
   }
   50% {
-    box-shadow: 0 0 16px #00ff88;
+    box-shadow: 0 0 16px #c0e600;
   }
   100% {
-    box-shadow: 0 0 8px #00ff88;
+    box-shadow: 0 0 8px #c0e600;
   }
-}
-
-.f1-win {
-  animation: pulseWin 2s infinite;
 }
 
 /* 📲 Tablet */
@@ -168,7 +167,7 @@
   .f1-game-image img {
     height: auto;
     max-height: 200px;
-    object-fit: contain; /* asegura que la imagen se vea completa */
+    object-fit: contain;
   }
 
   .f1-game-info h3 {

@@ -1,5 +1,5 @@
 .f1-game-container {
-  background-color: #0d0d0d;
+  background-color: #0a1424; /* azul oscuro del body */
   color: #f0f0f0;
   padding: 24px;
   border-radius: 12px;
@@ -9,7 +9,8 @@
 .f1-title {
   font-size: 28px;
   margin-bottom: 8px;
-  color: #ff2d55;
+  color: #c0e600; /* verde del logo */
+  text-shadow: 0 0 8px #c0e600;
 }
 
 .f1-subtitle {
@@ -18,25 +19,39 @@
   color: #aaa;
 }
 
+.f1-card:hover {
+  border-color: #c0e600; /* verde del logo */
+  background-color: #c0e60022;
+  box-shadow: 0 0 10px #c0e600;
+}
+
+.f1-submit-btn {
+  background-color: #c0e600; /* verde del logo */
+  color: #0a1424;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.f1-submit-btn:hover {
+  background-color: #d4ff33; /* tono más claro del verde */
+  box-shadow: 0 0 10px #c0e600;
+}
+
+.mode-selector button:hover {
+  border-color: #c0e600;
+  background-color: #c0e60022;
+  color: #c0e600;
+}
+
 .f1-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 16px;
   margin-bottom: 24px;
-}
-
-.f1-card {
-  background-color: #1a1a1a;
-  border: 2px solid #333;
-  border-radius: 8px;
-  padding: 12px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.f1-card:hover {
-  border-color: #00f0ff;
-  background-color: #00f0ff22;
 }
 
 .f1-card.selected {
@@ -61,21 +76,6 @@
   align-items: center;
   gap: 15px;
   margin-bottom: 20px;
-}
-
-.f1-submit-btn {
-  background-color: #ff2d55;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.f1-submit-btn:hover {
-  background-color: #ff4d75;
 }
 
 .f1-result {

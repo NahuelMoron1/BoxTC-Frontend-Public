@@ -10,8 +10,8 @@
 
 <div class="containsAll" *ngIf="gameStarted && gameID">
   <div class="main-title">
-    <h1>PADDOCK1 Connections</h1>
-    <p class="f1-subtitle">Find the right connections</p>
+    <h1>BoxTC Conexiones</h1>
+    <p class="f1-subtitle">Encuentra las conexiones correctas</p>
   </div>
 
   <!-- Bloques de grupos acertados -->
@@ -47,9 +47,9 @@
   <!-- Botones -->
   <div class="controls" *ngIf="!gameOver">
     <button (click)="submitSelection()" [disabled]="selected.length !== 4">
-      Submit
+      Verificar
     </button>
-    <button (click)="clearSelection()">Clear</button>
+    <button (click)="clearSelection()">Resetear</button>
   </div>
 
   <!-- Feedback -->

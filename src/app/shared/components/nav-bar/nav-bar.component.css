@@ -1,22 +1,22 @@
 .navbar {
   display: flex;
   align-items: center;
-  background: none;
+  background-color: #13203a; /* azul intermedio para diferenciar del body */
   padding: 12px 24px;
-  color: white;
+  color: #f5f5f5;
   font-family: "f1regular";
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  border-bottom: 1px solid white;
+  border-bottom: 2px solid #c0e600; /* verde del logo */
 }
 
 .logo {
   width: 30vh;
+}
 
-  img {
-    width: 100%;
-  }
+.logo img {
+  width: 100%;
 }
 
 .icons {
@@ -25,13 +25,17 @@
 }
 
 .navbar a {
-  color: white;
+  color: #f5f5f5;
   text-decoration: none;
   font-weight: 500;
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
 }
 
 .navbar a:hover {
-  text-decoration: underline;
+  color: #c0e600; /* verde del logo */
+  text-shadow: 0 0 8px #c0e600; /* glow racing */
 }
 
 .list {
@@ -42,18 +46,23 @@
 
 .list li {
   cursor: pointer;
-  transition: transform 0.8s ease, color 0.8s ease;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    text-shadow 0.3s ease;
 }
 
 .list li:hover {
   transform: scale(1.07);
-  color: #e10600;
+  color: #c0e600; /* verde del logo */
+  text-shadow: 0 0 8px #a1e600;
 }
 
 .follow-us-container {
   position: absolute;
   right: 20px;
 }
+
 /* 📲 TABLET */
 @media (max-width: 1024px) {
   .navbar {

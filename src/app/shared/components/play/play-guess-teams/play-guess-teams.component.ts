@@ -341,13 +341,13 @@ export class PlayGuessTeamsComponent implements OnInit {
 
   surrender() {
     Swal.fire({
-      title: '¿Are you sure?',
-      text: "If you give up, you'll lose today's Guess Team, and the answers will be revealed",
+      title: '¿Estas seguro?',
+      text: 'Si te rindes, perderás Guess Team, y las respuestas serán reveladas',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, give up',
+      confirmButtonText: 'Si, rendirme',
       cancelButtonText: 'Cancel',
       background: '#1b1b1bff',
       color: '#dcecfbff',
@@ -367,8 +367,8 @@ export class PlayGuessTeamsComponent implements OnInit {
         this.saveProgress();
 
         Swal.fire({
-          title: 'You gave up 🏳️',
-          text: 'These were the answers. Keep trying tomorrow!',
+          title: 'Te rendiste 🏳️',
+          text: 'Estas eran las respuestas. Sigue intentando mañana!',
           icon: 'info',
           confirmButtonColor: '#ff0000',
           background: '#1b1b1bff',

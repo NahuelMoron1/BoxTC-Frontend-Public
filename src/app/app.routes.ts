@@ -26,9 +26,9 @@ export const routes: Routes = [
   { path: 'play/best10', component: BestTensPageComponent },
   { path: 'play/impostor', component: ImpostorGameComponent },
   { path: 'play/connections', component: ConnectionsGameComponent },
-  { path: 'play/guess-teams', component: GuessTeamsPageComponent },
-  { path: 'play/h2h', component: H2hGameComponent },
-  { path: 'play/guess-careers', component: GuessCareersPageComponent },
+  //{ path: 'play/guess-teams', component: GuessTeamsPageComponent },
+  //{ path: 'play/h2h', component: H2hGameComponent },
+  //{ path: 'play/guess-careers', component: GuessCareersPageComponent },
   { path: 'play/timeline', component: PlayTimelinePageComponent },
 
   //news

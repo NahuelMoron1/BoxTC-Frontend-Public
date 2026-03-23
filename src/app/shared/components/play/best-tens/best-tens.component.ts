@@ -165,7 +165,7 @@ export class BestTensComponent implements OnInit {
 
         Swal.fire({
           title: 'You ran out of time',
-          text: 'These were the answers. Keep trying tomorrow!',
+          text: 'Estas eran las respuestas. Sigue intentando mañana!',
           icon: 'info',
           confirmButtonColor: '#ff0000',
           background: '#1b1b1bff',
@@ -177,14 +177,14 @@ export class BestTensComponent implements OnInit {
 
   surrender() {
     Swal.fire({
-      title: '¿Are you sure?',
-      text: "If you give up, you'll lose today's Best 10, and the answers will be revealed",
+      title: '¿Estas seguro?',
+      text: 'Si te rindes, perderás el top 10 de hoy, y las respuestas serán reveladas',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, give up',
-      cancelButtonText: 'Cancel',
+      confirmButtonText: 'Si, rendirme',
+      cancelButtonText: 'Cancelar',
       background: '#1b1b1bff',
       color: '#dcecfbff',
     }).then(async (result) => {
@@ -199,8 +199,8 @@ export class BestTensComponent implements OnInit {
         this.saveProgress();
 
         Swal.fire({
-          title: 'You gave up 🏳️',
-          text: 'These were the answers. Keep trying tomorrow!',
+          title: 'Te rendiste 🏳️',
+          text: 'Estas eran las respuestas. Sigue intentando mañana!',
           icon: 'info',
           confirmButtonColor: '#ff0000',
           background: '#1b1b1bff',

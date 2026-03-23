@@ -124,8 +124,8 @@ export class PlayTimelineComponent implements OnInit {
     if (this.placedEvents.includes(null)) {
       Swal.fire({
         icon: 'error',
-        title: 'Incomplete',
-        text: 'Please place all events before verifying.',
+        title: 'Incompleto',
+        text: 'Por favor, ponga todos los eventos en un lugar vacío antes de verificar.',
         background: '#1b1b1bff',
         color: '#dcecfbff',
       });
@@ -153,16 +153,16 @@ export class PlayTimelineComponent implements OnInit {
           if (this.gameWon) {
             Swal.fire({
               icon: 'success',
-              title: 'You Won!',
-              text: 'All events are in the correct order!',
+              title: 'Ganaste!',
+              text: 'Todos los eventos estan en el orden correcto!',
               background: '#1b1b1bff',
               color: '#dcecfbff',
             });
           } else {
             Swal.fire({
               icon: 'error',
-              title: 'You Lost',
-              text: 'Some events are out of order.',
+              title: 'Perdiste',
+              text: 'Algunos eventos estan en el lugar incorrecto.',
               background: '#1b1b1bff',
               color: '#dcecfbff',
             });

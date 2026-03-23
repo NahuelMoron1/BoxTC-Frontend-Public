@@ -11,7 +11,7 @@
 <div class="f1-game-container" *ngIf="gamedata && gameMode">
   <h2 class="f1-title">{{ gamedata.title }}</h2>
   <p class="f1-subtitle">
-    Avoid the impostors — based on: <strong>{{ gamedata.type }}</strong>
+    Evita los impostores — basado en: <strong>{{ gamedata.type }}</strong>
   </p>
 
   <div class="f1-grid">
@@ -40,7 +40,7 @@
 
   <div class="f1-actions">
     <button *ngIf="!gameOver" class="f1-submit-btn" (click)="verifySelection()">
-      🚦 Verify Selection
+      🚦 Verificar
     </button>
     <app-surrender *ngIf="!gameOver" (surrender)="surrender()"></app-surrender>
   </div>
@@ -52,21 +52,21 @@
     [class.win]="gameResult.game_won"
     [class.lose]="!gameResult.game_won"
   >
-    <p>{{ gameResult.game_won ? "🏁 You won!" : "❌ You lost!" }}</p>
+    <p>{{ gameResult.game_won ? "🏁 Ganaste!" : "❌ Perdiste!" }}</p>
     <!-- Mostrar mensaje diferente si se rindió -->
     <ng-container *ngIf="!hasSurrendered; else surrenderedMessage">
       <p *ngIf="gameResult.impostors_selected.length > 0">
-        You selected {{ gameResult.impostors_selected.length }} impostors
+        Seleccionaste {{ gameResult.impostors_selected.length }} impostores
       </p>
       <p *ngIf="gameResult.impostors_selected.length === 0">
-        You selected {{ gameResult.innocents_selected.length }} out of
-        {{ gameResult.all_innocents.length }} correct
+        Seleccionaste {{ gameResult.innocents_selected.length }} de
+        {{ gameResult.all_innocents.length }} correctos
       </p>
     </ng-container>
     <ng-template #surrenderedMessage>
-      <p>You gave up. Here are the answers:</p>
-      <p>Impostors: {{ impostorIDs.length }}</p>
-      <p>Innocents: {{ innocentIDs.length }}</p>
+      <p>Te rendiste. Estas eran las respuestas:</p>
+      <p>Impostores: {{ impostorIDs.length }}</p>
+      <p>Inocentes: {{ innocentIDs.length }}</p>
     </ng-template>
   </div>
 
@@ -80,10 +80,10 @@
     <p>
       {{
         gameResultByOne.game_won
-          ? "🏁 You won!"
-          : "❌ You selected an impostor!"
+          ? "🏁 Ganaste!"
+          : "❌ Seleccionaste un impostor!"
       }}
     </p>
-    <p *ngIf="gameOver">Game Over — Try again tomorrow!</p>
+    <p *ngIf="gameOver">Game Over — Intentalo mañana nuevamente!</p>
   </div>
 </div>

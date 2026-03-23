@@ -1,9 +1,9 @@
 <div class="f1-mode-wrapper">
   <div class="f1-mode-selector">
-    <h2 class="f1-mode-title">Paddock1 Top 10</h2>
+    <h2 class="f1-mode-title">BoxTC Top 10</h2>
     <p class="f1-mode-description">
-      Choose your game mode and test your motorsport instincts.<br />
-      Will you guess the top 10 correctly?
+      Elegí tu modo de juego y poné a prueba tus conocimientos del TC.<br />
+      Podrás adivinar el Top 10 en orden?
     </p>
 
     <div class="f1-mode-buttons">
@@ -12,18 +12,18 @@
         class="f1-mode-btn soft"
         [class.selected]="timer === false"
       >
-        Normal Mode
+        Modo Normal
       </button>
       <button
         (click)="timer = true"
         class="f1-mode-btn ultra"
         [class.selected]="timer === true"
       >
-        Timer Mode (2 min)
+        Modo Contador (2 min)
       </button>
     </div>
 
-    <button class="f1-start-btn" (click)="startGame()">Start Game</button>
+    <button class="f1-start-btn" (click)="startGame()">Empezar</button>
   </div>
 
   <div class="f1-mode-image-placeholder">

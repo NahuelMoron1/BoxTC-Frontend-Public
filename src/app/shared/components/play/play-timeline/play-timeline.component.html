@@ -16,7 +16,7 @@
       can fix it as soon as posible. Thanks for playing our game!
     </p>
   </div>-->
-  <h2 class="title">Play Timeline</h2>
+  <h2 class="title">BoxTC Timeline</h2>
 
   <div class="slots">
     <div
@@ -42,13 +42,13 @@
         />
       </ng-container>
       <ng-template #empty>
-        <span class="placeholder">Empty slot</span>
+        <span class="placeholder">Lugar vacío</span>
       </ng-template>
     </div>
   </div>
 
   <div *ngIf="gameOver && !gameWon" class="correct-order">
-    <h4>Correct Order:</h4>
+    <h4>Orden correcto:</h4>
     <ul>
       <li *ngFor="let ev of correctOrder">
         <img [src]="getImageUrl(ev.image)" class="order-img" />
@@ -76,9 +76,9 @@
 </div>
 
 <div class="buttons" *ngIf="gameMode && timelineId && !gameOver">
-  <button class="btn verify" (click)="verifyOrder()">Verify Order</button>
+  <button class="btn verify" (click)="verifyOrder()">Verificar</button>
 
-  <button class="btn reset" (click)="resetBoard()">Reset</button>
+  <button class="btn reset" (click)="resetBoard()">Resetear</button>
 </div>
 
 <div *ngIf="gameOver" class="result">

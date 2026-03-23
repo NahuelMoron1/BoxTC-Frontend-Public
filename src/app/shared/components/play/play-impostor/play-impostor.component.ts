@@ -4,7 +4,6 @@ import { environment } from '../../../../environments/environment';
 import {
   Gamedata_Impostor,
   Gamedata_ImpostorByOne,
-  Gamedata_ImpostorSurrender,
 } from '../../../models/IGamedata_Impostor';
 import { Top10Gamedata } from '../../../models/ITop10Gamedata';
 import { ImpostorService } from '../../../services/impostor.service';
@@ -307,14 +306,14 @@ export class PlayImpostorComponent implements OnInit {
     if (!this.gamedata) return;
 
     Swal.fire({
-      title: '¿Are you sure?',
-      text: "If you give up, you'll lose today's Impostor game, and the answers will be revealed",
+      title: '¿Estas seguro?',
+      text: 'Si te rindes, perderás el juego del impostor de hoy, y las respuestas serán reveladas',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, give up',
-      cancelButtonText: 'Cancel',
+      confirmButtonText: 'Si, rendirme',
+      cancelButtonText: 'Cancelar',
       background: '#1b1b1bff',
       color: '#dcecfbff',
     }).then(async (result) => {
@@ -355,8 +354,8 @@ export class PlayImpostorComponent implements OnInit {
         }
 
         Swal.fire({
-          title: 'You gave up 🏳️',
-          text: 'These were the answers. Keep trying tomorrow!',
+          title: 'Te rendiste 🏳️',
+          text: 'Estas eran las respuestas. Sigue intentando mañana!',
           icon: 'info',
           confirmButtonColor: '#ff0000',
           background: '#1b1b1bff',

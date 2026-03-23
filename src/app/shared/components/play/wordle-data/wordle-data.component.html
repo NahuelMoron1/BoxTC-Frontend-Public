@@ -9,7 +9,7 @@
 ></app-game-not-found>
 
 <div class="wordle-container" *ngIf="gameStarted && word !== ''">
-  <h2>GUESS THE DRIVER</h2>
+  <h2>ADIVINA EL PILOTO</h2>
   <div class="grid">
     <div class="row" *ngFor="let row of resultGrid; let rowIndex = index">
       <div
@@ -32,10 +32,10 @@
 
   <div class="final-word">
     <div *ngIf="gameOver && showFinalMessage">
-      <p *ngIf="gameWin">Green flag! You've won today's paddock1 wordle</p>
-      <p *ngIf="!gameWin">Red flag! We're sorry, but you lost today.</p>
+      <p *ngIf="gameWin">Bandera verde! Ganaste el wordle del día de BoxTC</p>
+      <p *ngIf="!gameWin">Bandera roja! Lo sentimos, pero perdiste hoy.</p>
       <p>
-        Today's wordle answer is
+        La palabra del día de hoy es
         <strong class="drivername">{{ word.toUpperCase() }}</strong>
       </p>
     </div>

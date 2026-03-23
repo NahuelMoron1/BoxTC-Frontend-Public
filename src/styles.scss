@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  background-color: #0d0e18;
+  background-color: #0a1424;
 }
 @font-face {
   font-family: "f1Black";
@@ -39,16 +39,15 @@ body {
   font-style: normal;
 }
 
-/* 🎨 Variables globales */
 :root {
-  --bg-color: #0d0d0d;
-  --accent-color: #e10600; /* Rojo Ferrari */
-  --secondary-color: #222;
-  --text-color: #f5f5f5;
-  --correct-color: #2ecc71;
-  --present-color: #f1c40f;
-  --absent-color: #7f8c8d;
-  --cell-border: #333;
+  --bg-color: #0a1424; /* azul oscuro del fondo */
+  --accent-color: #a1e600; /* verde exacto del logo */
+  --secondary-color: #13203a; /* azul intermedio para navbar */
+  --text-color: #f5f5f5; /* blanco */
+  --correct-color: #00e676; /* verde correcto */
+  --present-color: #ffe32d; /* amarillo vibrante */
+  --absent-color: #7f8c8d; /* gris */
+  --cell-border: #1c2a40; /* borde gris azulado */
   --font-main: "Orbitron", sans-serif;
 }
 

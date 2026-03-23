@@ -148,7 +148,7 @@ export class PlayConnectionsComponent {
 
   async submitSelection() {
     if (this.selected.length !== 4) {
-      this.feedback = 'You must select exactly 4 results.';
+      this.feedback = 'Debes seleccionar exactamente 4 resultados.';
       return;
     }
 
@@ -158,7 +158,7 @@ export class PlayConnectionsComponent {
     );
 
     if (!res) {
-      this.feedback = 'Something went wrong. Try again.';
+      this.feedback = 'Ocurrió un error. Intente nuevamente.';
       return;
     }
 
@@ -168,7 +168,7 @@ export class PlayConnectionsComponent {
 
     switch (matchCount) {
       case 4:
-        this.feedback = `✅ Perfect! You found a full group: ${res.group?.title}`;
+        this.feedback = `✅ Perfecto! Encontraste un grupo: ${res.group?.title}`;
 
         // Extraer los resultados seleccionados
         const matched = this.remainingResults.filter((r) =>
@@ -221,15 +221,16 @@ export class PlayConnectionsComponent {
 
       case 3:
         this.feedback =
-          '🟡 Almost! 3 of your selections belong to the same group.';
+          '🟡 Casi! 3 de tus seleccionados pertenecen al mismo grupo.';
         break;
 
       case 2:
-        this.feedback = '🟠 Getting closer! 2 of your selections match.';
+        this.feedback =
+          '🟠 Te estas acercando! 2 de tus seleccionados pertenecen al mismo grupo.';
         break;
 
       default:
-        this.feedback = '❌ Incorrect. Try again!';
+        this.feedback = '❌ Incorrecto. Intentalo de nuevo!';
     }
   }
 
