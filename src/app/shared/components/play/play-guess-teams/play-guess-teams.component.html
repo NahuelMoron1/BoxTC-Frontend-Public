@@ -41,7 +41,7 @@
         type="text"
         [(ngModel)]="inputValues.team"
         (input)="onInputChange($event, 'team')"
-        placeholder="Guess Team"
+        placeholder="Adivina Equipo"
         class="guess-input"
         [class.correct]="!!results.team && (!gameLost || !!selectedIds.team)"
         [class.surrender]="!!results.team && gameLost && !selectedIds.team"
@@ -66,7 +66,7 @@
       (click)="guess('team')"
       class="guess-btn"
     >
-      Guess Team
+      Adivina Equipo
     </button>
   </div>
 
@@ -104,7 +104,7 @@
         type="text"
         [(ngModel)]="inputValues.driver1"
         (input)="onInputChange($event, 'driver1')"
-        placeholder="Guess Driver 1"
+        placeholder="Adivina Piloto 1"
         class="guess-input"
         [class.correct]="
           !!results.driver1 && (!gameLost || !!selectedIds.driver1)
@@ -132,7 +132,7 @@
         (click)="guess('driver1')"
         class="guess-btn"
       >
-        Guess Driver 1
+        Adivina Piloto 1
       </button>
     </div>
 
@@ -165,7 +165,7 @@
         type="text"
         [(ngModel)]="inputValues.tp"
         (input)="onInputChange($event, 'tp')"
-        placeholder="Guess Team Principal"
+        placeholder="Adivina Principal del Equipo"
         class="guess-input"
         [class.correct]="!!results.tp && (!gameLost || !!selectedIds.tp)"
         [class.surrender]="!!results.tp && gameLost && !selectedIds.tp"
@@ -189,7 +189,7 @@
         (click)="guess('tp')"
         class="guess-btn"
       >
-        Guess Principal
+        Adivina Principal
       </button>
     </div>
 
@@ -226,7 +226,7 @@
         type="text"
         [(ngModel)]="inputValues.driver2"
         (input)="onInputChange($event, 'driver2')"
-        placeholder="Guess Driver 2"
+        placeholder="Adivina Piloto 2"
         class="guess-input"
         [class.correct]="
           !!results.driver2 && (!gameLost || !!selectedIds.driver2)
@@ -254,14 +254,14 @@
         (click)="guess('driver2')"
         class="guess-btn"
       >
-        Guess Driver 2
+        Adivina Piloto 2
       </button>
     </div>
   </div>
 
   <div class="global-guess" *ngIf="gameMode === 'normal' && !gameOver">
     <button (click)="guessAll()" class="guess-btn guess-btn-global">
-      Guess All
+      Adivina Todo
     </button>
   </div>
 

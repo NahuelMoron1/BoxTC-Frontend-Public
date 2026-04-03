@@ -9,7 +9,7 @@
 ></app-game-not-found>
 
 <div class="guess-careers-container" *ngIf="gamedata && gameStarted">
-  <h1 class="game-title">I raced for these teams. Who am I?</h1>
+  <h1 class="game-title">He corrido para estos equipos. ¿Quién soy?</h1>
 
   <div class="driver-section">
     <div
@@ -90,7 +90,7 @@
         [disabled]="hintsRemaining <= 0"
         (click)="useHint()"
       >
-        Hint ({{ hintsRemaining }})
+        Pista ({{ hintsRemaining }})
       </button>
 
       <div class="hints-display" *ngIf="hints.teamYears">
@@ -98,7 +98,7 @@
           class="hint-item"
           *ngIf="hints.teamYears && getTeamForYears(hints.teamYears)"
         >
-          <span class="hint-label">Team Years:</span>
+          <span class="hint-label">Años del Equipo:</span>
           <span class="hint-value">
             <span class="team-name"
               >{{ getTeamForYears(hints.teamYears)?.name }}:</span
@@ -114,10 +114,10 @@
         type="text"
         [(ngModel)]="driverGuess"
         (input)="onInputChange($event)"
-        placeholder="Guess Driver"
+        placeholder="Adivina Piloto"
         class="driver-input"
       />
-      <button class="submit-button" (click)="submitGuess()">Submit</button>
+      <button class="submit-button" (click)="submitGuess()">Enviar</button>
     </div>
   </div>
   <app-game-won *ngIf="gameWon" [gameName]="'Guess Driver'"></app-game-won>

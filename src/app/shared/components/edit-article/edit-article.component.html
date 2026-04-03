@@ -12,7 +12,7 @@
   <input
     type="text"
     [(ngModel)]="article.title"
-    placeholder="Article Title"
+    placeholder="Título del Artículo"
     class="title editable-input"
   />
 
@@ -22,7 +22,7 @@
     <input
       type="text"
       [(ngModel)]="article.author"
-      placeholder="Author"
+      placeholder="Autor"
       class="meta-input short"
     />
     <input type="date" [(ngModel)]="article.date" class="meta-input short" />
@@ -31,7 +31,7 @@
   <textarea
     [(ngModel)]="article.summary"
     rows="3"
-    placeholder="Short summary of the article..."
+    placeholder="Resumen breve del artículo..."
     class="summary-textarea"
   ></textarea>
 
@@ -39,13 +39,15 @@
   <textarea
     [(ngModel)]="article.text"
     rows="10"
-    placeholder="Write your article here..."
+    placeholder="Escribí tu artículo aquí..."
     class="full-text editable-textarea"
   ></textarea>
 
   <!-- Botón de guardar -->
   <div class="save-box">
-    <button class="saveButton" (click)="submitArticle()">Save Edit</button>
-    <button *ngIf="article" (click)="deleteArticle()">Delete Article</button>
+    <button class="saveButton" (click)="submitArticle()">
+      Guardar Cambios
+    </button>
+    <button *ngIf="article" (click)="deleteArticle()">Eliminar Artículo</button>
   </div>
 </div>

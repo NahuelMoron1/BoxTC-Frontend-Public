@@ -18,8 +18,9 @@
   font-weight: bold;
   letter-spacing: 1px;
   font-family: "f1BoldWeb";
-  color: #e10600; /*rgb(226, 32, 32);*/
+  color: #c0e600;
   letter-spacing: 3px;
+  text-shadow: 0 0 15px rgba(192, 230, 0, 0.4);
 }
 
 .hero-subtitle {
@@ -38,11 +39,17 @@
 }
 
 .chip {
-  border: 1px solid #ff1e1e;
-  color: #ff1e1e;
+  border: 1px solid #c0e600;
+  color: #c0e600;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
   font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.chip:hover {
+  background-color: rgba(192, 230, 0, 0.1);
+  box-shadow: 0 0 10px rgba(192, 230, 0, 0.2);
 }
 
 /* Divider */
@@ -55,9 +62,10 @@
 /* Games */
 .section-title {
   font-size: 2rem;
-  color: #ff1e1e;
+  color: #c0e600;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(192, 230, 0, 0.4);
 }
 
 .games-grid {
@@ -70,16 +78,17 @@
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 1.25rem;
-  background-color: #1a1a1a;
-  border: 1px solid #ff1e1e;
+  background: linear-gradient(135deg, #0a1424 0%, #1a2a3a 100%);
+  border: 1px solid #c0e600;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(255, 30, 30, 0.25);
-  transition: transform 0.3s ease;
+  box-shadow: 0 0 20px rgba(192, 230, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .game-card:hover {
   transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(192, 230, 0, 0.35);
 }
 
 .image-wrap img {
@@ -87,7 +96,7 @@
   height: 100%;
   min-height: 220px;
   object-fit: contain;
-  border-right: 1px solid #ff1e1e;
+  border-right: 1px solid #c0e600;
 }
 
 .game-content {
@@ -96,8 +105,9 @@
 
 .game-title {
   font-size: 1.6rem;
-  color: #ff3b3b;
+  color: #c0e600;
   text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(192, 230, 0, 0.3);
 }
 
 .game-tagline {
@@ -113,9 +123,10 @@
 
 .howto-title {
   font-size: 1rem;
-  color: #ff1e1e;
+  color: #c0e600;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
+  text-shadow: 0 0 6px rgba(192, 230, 0, 0.3);
 }
 
 .howto-list {
@@ -134,7 +145,7 @@
   content: "▸";
   position: absolute;
   left: 0;
-  color: #ff1e1e;
+  color: #c0e600;
 }
 
 /* News */
@@ -142,10 +153,10 @@
   display: grid;
   grid-template-columns: 360px 1fr;
   gap: 1.5rem;
-  background-color: #1a1a1a;
-  border: 1px solid #ff1e1e;
+  background: linear-gradient(135deg, #0a1424 0%, #1a2a3a 100%);
+  border: 1px solid #c0e600;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 30, 30, 0.25);
+  box-shadow: 0 0 20px rgba(192, 230, 0, 0.2);
   overflow: hidden;
 }
 

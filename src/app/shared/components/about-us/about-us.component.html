@@ -2,15 +2,15 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
-      <h1 class="hero-title">PADDOCK1</h1>
+      <h1 class="hero-title">BoxTC</h1>
       <p class="hero-subtitle">
-        The most complete Formula 1 trivia platform in the world. Daily games,
-        modern design, and authentic paddock spirit.
+        La plataforma de trivia sobre Turismo Carretera más completa del país.
+        Juegos diarios, diseño moderno y auténtico espíritu del TC.
       </p>
       <div class="hero-highlights">
-        <span class="chip">Daily Games</span>
-        <span class="chip">Authentic F1 Style</span>
-        <span class="chip">Community & News</span>
+        <span class="chip">Juegos Diarios</span>
+        <span class="chip">Estilo TC Auténtico</span>
+        <span class="chip">Comunidad y Noticias</span>
       </div>
     </div>
   </section>
@@ -19,7 +19,7 @@
 
   <!-- Games -->
   <section class="games-section">
-    <h2 class="section-title">Our Games</h2>
+    <h2 class="section-title">Nuestros Juegos</h2>
     <div class="games-grid">
       <div class="game-card" *ngFor="let game of games">
         <div class="image-wrap">
@@ -30,7 +30,7 @@
           <p class="game-tagline">{{ game.tagline }}</p>
           <p class="game-description">{{ game.description }}</p>
           <div class="howto">
-            <h4 class="howto-title">How to Play</h4>
+            <h4 class="howto-title">Cómo Jugar</h4>
             <ul class="howto-list">
               <li *ngFor="let step of game.howToPlay">{{ step }}</li>
             </ul>
@@ -52,7 +52,7 @@
         <h2 class="section-title">{{ newsInfo.title }}</h2>
         <p class="news-description">{{ newsInfo.description }}</p>
         <div class="invite">
-          <p>Want your article featured on PADDOCK1?</p>
+          <p>¿Querés que tu artículo sea destacado en BoxTC?</p>
           <a [routerLink]="newsInfo.contactRoute" class="invite-button">
             {{ newsInfo.contactCta }}
           </a>

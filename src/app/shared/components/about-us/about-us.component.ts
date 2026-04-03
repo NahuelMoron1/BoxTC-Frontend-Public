@@ -14,100 +14,101 @@ export class AboutUsComponent {
     {
       title: 'Impostor',
       image: 'impostor.png',
-      tagline: 'Spot the impostors among the grid.',
+      tagline: 'Identifica los impostores en la grilla.',
       description:
-        'A fast deduction game. Inspired by the paddock, it challenges your knowledge of F1 history and context.',
+        'Un juego de deducción rápida. Inspirado en el TC, desafía tu conocimiento de la historia y contexto del turismo carretera.',
       howToPlay: [
-        'Read the clues carefully.',
-        'Identify the driver or team that does not belong.',
-        'Win by solving in the fewest attempts.',
+        'Lee las pistas cuidadosamente.',
+        'Identifica el piloto o equipo que no pertenece.',
+        'Gana resolviendo en el menor número de intentos.',
       ],
     },
     {
       title: 'Top10',
       image: 'top10.png',
-      tagline: 'Rank the grid like a strategist.',
+      tagline: 'Ordena la grilla como un estratega.',
       description:
-        'A tactical experience: build your best Top 10 using memory and stats. Perfect for fans who love rankings.',
+        'Una experiencia táctica: construye tu mejor Top 10 usando memoria y estadísticas. Perfecto para fans que aman los rankings.',
       howToPlay: [
-        'Drag and drop drivers or teams to form your Top 10.',
-        'Validate your order and learn from instant feedback.',
-        'Compete for the best daily score.',
+        'Arrastra y suelta pilotos o equipos para formar tu Top 10.',
+        'Valida tu orden y aprende de la retroalimentación instantánea.',
+        'Compite por la mejor puntuación diaria.',
       ],
     },
     {
       title: 'Wordle',
       image: 'wordle.png',
-      tagline: 'Guess the paddock word of the day.',
+      tagline: 'Adivina el apellido del piloto del día.',
       description:
-        'The F1 twist on the global word game: drivers, circuits, technical terms, and historic moments.',
+        'El giro del TC al juego de palabras global: pilotos, circuitos, términos técnicos y momentos históricos.',
       howToPlay: [
-        'Enter a word related to Formula 1.',
-        'Use feedback on correct/incorrect letters.',
-        'Solve in the fewest attempts possible.',
+        'Ingresa una palabra relacionada con el Turismo Carretera.',
+        'Usa la retroalimentación sobre letras correctas/incorrectas.',
+        'Resuelve en el menor número de intentos posible.',
       ],
     },
     {
-      title: 'Connections',
+      title: 'Conexiones',
       image: 'connections.png',
-      tagline: 'Find the hidden relationships.',
+      tagline: 'Encuentra las relaciones ocultas.',
       description:
-        'The classic association puzzle with F1 DNA: eras, stats, designs, and curiosities. Each solved group is celebrated visually.',
+        'El clásico puzzle de asociación con ADN del TC: eras, estadísticas, diseños y curiosidades. Cada grupo resuelto se celebra visualmente.',
       howToPlay: [
-        'Select groups of 4 related elements.',
-        'Each correct guess reorganizes the grid.',
-        'Complete the daily challenge with logic and knowledge.',
+        'Selecciona grupos de 4 elementos relacionados.',
+        'Cada acierto reorganiza la grilla.',
+        'Completa el desafío diario con lógica y conocimiento.',
       ],
     },
-    {
+    /*{
       title: 'Guess Teams',
       image: 'guess-teams-1.png',
-      tagline: 'Guess the team and all the team members.',
-      description: 'Can you guess the team and all the team members?',
+      tagline: 'Adivina el equipo y todos los miembros del equipo.',
+      description:
+        '¿Puedes adivinar el equipo y todos los miembros del equipo?',
       howToPlay: [
-        'You will be given a team, two drivers and the team principal.',
-        'For the team and drivers, you will be given a list of options to choose from.',
-        'It is important to notice that you need to choose the driver/team and not guess by typing the name in the input field.',
-        'For the team principal, you will need to guess the name by typing it in the input field. You can guess it by typing either firstname, lastname or both',
-        'Solve in the fewest attempts possible.',
+        'Te darán un equipo, dos pilotos y el jefe del equipo.',
+        'Para el equipo y pilotos, se te dará una lista de opciones para elegir.',
+        'Es importante notar que debes elegir el piloto/equipo y no adivinar escribiendo el nombre en el campo de entrada.',
+        'Para el jefe del equipo, deberás adivinar el nombre escribiéndolo en el campo de entrada. Puedes adivinarlo escribiendo el nombre, apellido o ambos.',
+        'Resuelve en el menor número de intentos posible.',
       ],
     },
     {
       title: 'Head To Head',
       image: 'h2h-about-us.png',
       tagline:
-        'Guess which driver finished higher at different stats on a season, compared by their teammates',
+        'Adivina qué piloto terminó mejor en diferentes estadísticas en una temporada, comparado con sus compañeros.',
       description:
-        'Which driver finished higher at different stats on a season, compared by their teammates',
+        'Qué piloto terminó mejor en diferentes estadísticas en una temporada, comparado con sus compañeros de equipo.',
       howToPlay: [
-        'You will see all stats hidden to guess them, after you guess them, you will see the results of the head to head.',
-        'You can either play normal mode or one by one mode.',
-        'In normal mode, you will see the results of the head to head after you guess all the stats togheter.',
-        'In one by one mode, you will see the results of the head to head after you guess each stat one by one.',
-        'Solve in the fewest attempts possible.',
+        'Verás todas las estadísticas ocultas para adivinarlas. Después de que las adivines, verás los resultados del cara a cara.',
+        'Puedes jugar en modo normal o en modo uno por uno.',
+        'En modo normal, verás los resultados del cara a cara después de adivinar todas las estadísticas juntas.',
+        'En modo uno por uno, verás los resultados del cara a cara después de adivinar cada estadística una por una.',
+        'Resuelve en el menor número de intentos posible.',
       ],
     },
     {
       title: 'Guess Driver',
       image: 'guess_careers2.png',
-      tagline: 'Guess the driver of a career based on the given clues',
+      tagline: 'Adivina el piloto de una carrera basado en las pistas dadas.',
       description:
-        'Can you guess the driver of a career based on the given teams?',
+        '¿Puedes adivinar el piloto de una carrera basado en los equipos dados?',
       howToPlay: [
-        'You will see a list of teams, but only the first team will be shown at first',
-        'As you try to guess the driver, if you get it wrong, you will see the next team',
-        'If you get it right, you will see the driver of the career',
-        'Solve in the fewest attempts possible.',
+        'Verás una lista de equipos, pero solo el primer equipo se mostrará al principio.',
+        'Mientras intentas adivinar el piloto, si te equivocas, verás el siguiente equipo.',
+        'Si aciertas, verás el piloto de la carrera.',
+        'Resuelve en el menor número de intentos posible.',
       ],
-    },
+    },*/
   ];
 
   newsInfo = {
-    title: 'Motorsport News',
+    title: 'Noticias de Automovilismo',
     description:
-      'Daily editorial coverage of the motorsport world: analysis, interviews, and paddock reports. If you want your article to appear, contact us to request contributor access.',
+      'Cobertura editorial diaria del mundo del automovilismo: análisis, entrevistas y reportes del TC. Si deseas que tu artículo aparezca, contáctanos para solicitar acceso de colaborador.',
     image: '/news.png',
-    contactCta: 'Contact Us',
+    contactCta: 'Contáctanos',
     contactRoute: '/contact',
   };
 }

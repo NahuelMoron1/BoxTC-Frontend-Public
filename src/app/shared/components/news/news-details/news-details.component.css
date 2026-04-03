@@ -12,13 +12,15 @@
   height: auto;
   border-radius: 12px;
   margin-bottom: 1.5rem;
-  box-shadow: 0 0 20px rgba(255, 7, 7, 0.857);
+  border: 2px solid #c0e600;
+  box-shadow: 0 0 20px rgba(192, 230, 0, 0.3);
 }
 
 .title {
   font-size: 2rem;
-  color: #ff1e1e;
+  color: #c0e600;
   margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(192, 230, 0, 0.4);
 }
 
 .meta {

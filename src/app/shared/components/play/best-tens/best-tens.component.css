@@ -1,14 +1,15 @@
 .top10-container {
   max-width: 700px;
   margin: 40px auto;
-  padding: 20px;
-  background: linear-gradient(to right, #0f0f0f, #1c1c1c);
-  border: 2px solid #ff0000;
+  padding: 24px;
+  background: linear-gradient(135deg, #0a1424 0%, #1a2a3a 100%);
+  border: 2px solid #c0e600;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-  color: white;
-  /*font-family: "Orbitron", sans-serif;*/
-  font-family: "f1BoldWeb";
+  box-shadow:
+    0 0 30px rgba(192, 230, 0, 0.2),
+    inset 0 0 20px rgba(192, 230, 0, 0.05);
+  color: #f0f0f0;
+  font-family: "Orbitron", sans-serif;
 }
 
 .top10-title {
@@ -16,8 +17,10 @@
   font-size: 1.8rem;
   margin-bottom: 30px;
   text-transform: uppercase;
-  border-bottom: 2px dashed #ff0000;
+  border-bottom: 2px solid #c0e600;
   padding-bottom: 10px;
+  color: #c0e600;
+  text-shadow: 0 0 10px rgba(192, 230, 0, 0.5);
 }
 
 .top10-list {
@@ -29,33 +32,38 @@
 .top10-item {
   display: flex;
   align-items: center;
-  background-color: #121212;
-  border-left: 5px solid #ff0000;
+  background-color: #1a2a3a;
+  border-left: 5px solid #c0e600;
   margin-bottom: 12px;
-  padding: 12px 16px;
+  padding: 14px 16px;
   border-radius: 8px;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .top10-item:hover {
-  transform: scale(1.02);
-  background-color: #1a1a1a;
+  transform: translateX(4px);
+  background-color: #243444;
+  border-left-color: #d4ff33;
+  box-shadow: 0 0 15px rgba(192, 230, 0, 0.15);
 }
 
 .top10-item.revealed {
-  border-left-color: #00ff00; /* verde al adivinar */
+  border-left-color: #00ff88;
+  background-color: #0a2a1a;
 }
 
 .position {
   font-size: 1.4rem;
   font-weight: bold;
-  color: #ff0000;
+  color: #c0e600;
   width: 40px;
   text-align: center;
+  text-shadow: 0 0 5px rgba(192, 230, 0, 0.5);
 }
 
 .position.revealed {
-  color: #00ff00; /* verde al adivinar */
+  color: #00ff88;
+  text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
 }
 
 .flag-image {
@@ -64,7 +72,8 @@
   border-radius: 50%;
   margin: 0 16px;
   object-fit: cover;
-  border: 2px solid #ff0000;
+  border: 2px solid #c0e600;
+  box-shadow: 0 0 8px rgba(192, 230, 0, 0.3);
 }
 
 .driver-info {
@@ -87,15 +96,16 @@
   text-align: right;
   font-size: 1.1rem;
   font-weight: bold;
-  color: #ff0000;
+  color: #c0e600;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  text-shadow: 0 0 5px rgba(192, 230, 0, 0.3);
 }
 
 .driver-stat label {
   font-size: 0.7rem;
-  color: #ccc;
+  color: #aaa;
   margin-top: 2px;
 }
 
@@ -108,58 +118,72 @@
 }
 
 .guess-box input {
-  padding: 10px;
+  padding: 12px;
   font-size: 1rem;
   width: 250px;
   border-radius: 6px;
-  border: 2px solid #ff0000;
-  background-color: #0f0f0f;
-  color: white;
+  border: 2px solid #c0e600;
+  background-color: #0a1424;
+  color: #f0f0f0;
+  transition: all 0.2s ease;
+}
+
+.guess-box input:focus {
+  outline: none;
+  border-color: #d4ff33;
+  box-shadow: 0 0 15px rgba(192, 230, 0, 0.3);
 }
 
 .guess-box button {
-  padding: 10px 16px;
+  padding: 12px 20px;
   font-size: 1rem;
-  background-color: #ff0000;
-  color: white;
+  background-color: #c0e600;
+  color: #0a1424;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  font-weight: bold;
+  transition: all 0.2s ease;
 }
 
 .guess-box button:hover {
-  background-color: #cc0000;
+  background-color: #d4ff33;
+  box-shadow: 0 0 15px rgba(212, 255, 51, 0.4);
 }
 
 .mode-selection {
   text-align: center;
-  font-family: "f1BoldWeb";
+  font-family: "Orbitron", sans-serif;
   margin-top: 40px;
-  color: white;
+  color: #f0f0f0;
 }
 
 .mode-selection button {
   margin: 10px;
   padding: 12px 20px;
   font-size: 1rem;
-  background-color: #ff0000;
-  color: white;
+  background-color: #c0e600;
+  color: #0a1424;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
 }
 
 .mode-selection button:hover {
-  background-color: #cc0000;
+  background-color: #d4ff33;
+  box-shadow: 0 0 15px rgba(212, 255, 51, 0.4);
 }
 
 .timer {
   text-align: center;
   font-size: 1.2rem;
-  color: #00ff00;
+  color: #c0e600;
   margin-bottom: 20px;
   margin-top: 20px;
+  text-shadow: 0 0 10px rgba(192, 230, 0, 0.5);
+  font-weight: bold;
 }
 
 @keyframes fadeInReveal {
@@ -178,19 +202,21 @@
 }
 
 .correct {
-  background-color: #003300;
-  color: #00ff00;
-  border-left: 4px solid #00ff00;
+  background-color: #0a2a1a;
+  color: #00ff88;
+  border-left: 4px solid #00ff88 !important;
+  box-shadow: inset 0 0 10px rgba(0, 255, 136, 0.1);
 }
 
 .missed {
-  background-color: #330000;
-  color: #ff4444;
-  border-left: 4px solid #ff4444 !important;
+  background-color: #2a0a0a;
+  color: #ff6666;
+  border-left: 4px solid #ff6666 !important;
+  box-shadow: inset 0 0 10px rgba(255, 102, 102, 0.1);
 }
 
 .missedpos {
-  color: #ff4444 !important;
+  color: #ff6666 !important;
 }
 
 /* 📲 Tablet */

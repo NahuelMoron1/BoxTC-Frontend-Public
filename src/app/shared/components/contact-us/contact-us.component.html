@@ -1,40 +1,46 @@
 <div class="contact-container">
-  <h1 class="section-title">Contact Us</h1>
+  <h1 class="section-title">Contáctanos</h1>
   <p class="subtitle">
-    Reach out to BoxTC— whether you want to publish an article, report an issue,
-    or just say hello.
+    Ponete en contacto con BoxTC— ya sea que quieras publicar un artículo,
+    reportar un problema o simplemente saludar.
   </p>
 
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form-grid">
     <div class="form-row">
-      <input type="text" formControlName="firstName" placeholder="First Name" />
-      <input type="text" formControlName="lastName" placeholder="Last Name" />
+      <input type="text" formControlName="firstName" placeholder="Nombre" />
+      <input type="text" formControlName="lastName" placeholder="Apellido" />
     </div>
 
     <div class="form-row">
-      <input type="email" formControlName="email" placeholder="Email" />
+      <input
+        type="email"
+        formControlName="email"
+        placeholder="Correo Electrónico"
+      />
       <input
         type="text"
         formControlName="phone"
-        placeholder="Phone (optional)"
+        placeholder="Teléfono (opcional)"
       />
     </div>
 
     <div class="form-row">
       <select formControlName="reason">
-        <option value="" disabled selected>Select reason</option>
-        <option value="article">Submit an article</option>
-        <option value="bug">Report a bug</option>
-        <option value="other">Other</option>
+        <option value="" disabled selected>Selecciona el motivo</option>
+        <option value="article">Enviar un artículo</option>
+        <option value="bug">Reportar un error</option>
+        <option value="other">Otro</option>
       </select>
     </div>
 
     <textarea
       formControlName="message"
       rows="6"
-      placeholder="Write your message here..."
+      placeholder="Escribí tu mensaje aquí..."
     ></textarea>
 
-    <button type="submit" [disabled]="!contactForm.valid">Send Message</button>
+    <button type="submit" [disabled]="!contactForm.valid">
+      Enviar Mensaje
+    </button>
   </form>
 </div>
