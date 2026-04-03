@@ -108,7 +108,9 @@
   <!-- INPUTS PARA PILOTOS -->
   <div class="drivers-input">
     <div class="driver-input-box">
+      <!-- Input normal o cuando es correcto -->
       <input
+        *ngIf="!results.firstDriver || resultCorrectness.firstDriver === true"
         type="text"
         [(ngModel)]="inputValues.firstDriver"
         (input)="onInputChange($event, 'firstDriver')"
@@ -117,11 +119,20 @@
         [class.correct]="
           results.firstDriver && resultCorrectness.firstDriver === true
         "
-        [class.surrender]="
-          results.firstDriver && resultCorrectness.firstDriver === false
-        "
         [disabled]="!!results.firstDriver"
       />
+      <!-- Mostrar respuesta y respuesta correcta cuando es incorrecto -->
+      <div
+        *ngIf="results.firstDriver && resultCorrectness.firstDriver === false"
+        class="driver-answers-wrapper"
+      >
+        <div class="driver-correct-answer">
+          {{ results.firstDriver.name }}
+        </div>
+        <div class="driver-your-answer">
+          Tu respuesta: {{ inputValues.firstDriver }}
+        </div>
+      </div>
       <ul
         *ngIf="filteredOptions.length > 0 && activeField === 'firstDriver'"
         class="options"
@@ -143,7 +154,9 @@
     </div>
 
     <div class="driver-input-box">
+      <!-- Input normal o cuando es correcto -->
       <input
+        *ngIf="!results.secondDriver || resultCorrectness.secondDriver === true"
         type="text"
         [(ngModel)]="inputValues.secondDriver"
         (input)="onInputChange($event, 'secondDriver')"
@@ -152,11 +165,20 @@
         [class.correct]="
           results.secondDriver && resultCorrectness.secondDriver === true
         "
-        [class.surrender]="
-          results.secondDriver && resultCorrectness.secondDriver === false
-        "
         [disabled]="!!results.secondDriver"
       />
+      <!-- Mostrar respuesta y respuesta correcta cuando es incorrecto -->
+      <div
+        *ngIf="results.secondDriver && resultCorrectness.secondDriver === false"
+        class="driver-answers-wrapper"
+      >
+        <div class="driver-correct-answer">
+          {{ results.secondDriver.name }}
+        </div>
+        <div class="driver-your-answer">
+          Tu respuesta: {{ inputValues.secondDriver }}
+        </div>
+      </div>
       <ul
         *ngIf="filteredOptions.length > 0 && activeField === 'secondDriver'"
         class="options"
@@ -178,7 +200,9 @@
     </div>
 
     <div class="driver-input-box">
+      <!-- Input normal o cuando es correcto -->
       <input
+        *ngIf="!results.thirdDriver || resultCorrectness.thirdDriver === true"
         type="text"
         [(ngModel)]="inputValues.thirdDriver"
         (input)="onInputChange($event, 'thirdDriver')"
@@ -187,11 +211,20 @@
         [class.correct]="
           results.thirdDriver && resultCorrectness.thirdDriver === true
         "
-        [class.surrender]="
-          results.thirdDriver && resultCorrectness.thirdDriver === false
-        "
         [disabled]="!!results.thirdDriver"
       />
+      <!-- Mostrar respuesta y respuesta correcta cuando es incorrecto -->
+      <div
+        *ngIf="results.thirdDriver && resultCorrectness.thirdDriver === false"
+        class="driver-answers-wrapper"
+      >
+        <div class="driver-correct-answer">
+          {{ results.thirdDriver.name }}
+        </div>
+        <div class="driver-your-answer">
+          Tu respuesta: {{ inputValues.thirdDriver }}
+        </div>
+      </div>
       <ul
         *ngIf="filteredOptions.length > 0 && activeField === 'thirdDriver'"
         class="options"
