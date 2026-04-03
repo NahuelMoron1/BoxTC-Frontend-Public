@@ -1,0 +1,185 @@
+<app-guess-podium-mode-selector
+  *ngIf="!gameMode && gamedata"
+  (guessSelected)="startGame($event)"
+></app-guess-podium-mode-selector>
+
+<app-game-not-found
+  *ngIf="loaded && !gamedata?.id"
+  [gameName]="'Guess Podium'"
+></app-game-not-found>
+
+<div class="guess-play-container" *ngIf="gamedata && gameMode">
+  <!-- TITULO -->
+  <div class="game-title">
+    <h1>{{ gamedata.title }}</h1>
+    <p class="date-display">{{ gamedata.date }}</p>
+  </div>
+
+  <!-- IMAGENES DE MARCAS -->
+  <div class="cars-display">
+    <!-- Primer lugar - Marca -->
+    <div class="car-image-box">
+      <div class="car-image-wrapper" [class.revealed]="!!results.firstDriver">
+        <ng-container *ngIf="results.firstDriver; else firstCarLogo">
+          <img
+            [src]="getDriverImage(results.firstDriver.image)"
+            alt="Piloto"
+            class="car-image fade-in"
+          />
+        </ng-container>
+        <ng-template #firstCarLogo>
+          <img
+            [src]="getCarImage(gamedata.firstCarImage)"
+            alt="Marca"
+            class="car-image"
+          />
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Segundo lugar - Marca -->
+    <div class="car-image-box">
+      <div class="car-image-wrapper" [class.revealed]="!!results.secondDriver">
+        <ng-container *ngIf="results.secondDriver; else secondCarLogo">
+          <img
+            [src]="getDriverImage(results.secondDriver.image)"
+            alt="Piloto"
+            class="car-image fade-in"
+          />
+        </ng-container>
+        <ng-template #secondCarLogo>
+          <img
+            [src]="getCarImage(gamedata.secondCarImage)"
+            alt="Marca"
+            class="car-image"
+          />
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Tercer lugar - Marca -->
+    <div class="car-image-box">
+      <div class="car-image-wrapper" [class.revealed]="!!results.thirdDriver">
+        <ng-container *ngIf="results.thirdDriver; else thirdCarLogo">
+          <img
+            [src]="getDriverImage(results.thirdDriver.image)"
+            alt="Piloto"
+            class="car-image fade-in"
+          />
+        </ng-container>
+        <ng-template #thirdCarLogo>
+          <img
+            [src]="getCarImage(gamedata.thirdCarImage)"
+            alt="Marca"
+            class="car-image"
+          />
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <!-- INPUTS PARA PILOTOS -->
+  <div class="drivers-input">
+    <div class="driver-input-box">
+      <input
+        type="text"
+        [(ngModel)]="inputValues.firstDriver"
+        (input)="onInputChange($event, 'firstDriver')"
+        placeholder="1er Puesto"
+        class="driver-input"
+        [disabled]="!!results.firstDriver"
+      />
+      <ul
+        *ngIf="filteredOptions.length > 0 && activeField === 'firstDriver'"
+        class="options"
+      >
+        <li
+          *ngFor="let option of filteredOptions"
+          (click)="selectOption(option, 'firstDriver')"
+        >
+          {{ option.name }}
+        </li>
+      </ul>
+      <button
+        *ngIf="gameMode === 'byOne' && !results.firstDriver && !gameOver"
+        (click)="guess('driver', 'first')"
+        class="guess-btn"
+      >
+        Adivina
+      </button>
+    </div>
+
+    <div class="driver-input-box">
+      <input
+        type="text"
+        [(ngModel)]="inputValues.secondDriver"
+        (input)="onInputChange($event, 'secondDriver')"
+        placeholder="2do Puesto"
+        class="driver-input"
+        [disabled]="!!results.secondDriver"
+      />
+      <ul
+        *ngIf="filteredOptions.length > 0 && activeField === 'secondDriver'"
+        class="options"
+      >
+        <li
+          *ngFor="let option of filteredOptions"
+          (click)="selectOption(option, 'secondDriver')"
+        >
+          {{ option.name }}
+        </li>
+      </ul>
+      <button
+        *ngIf="gameMode === 'byOne' && !results.secondDriver && !gameOver"
+        (click)="guess('driver', 'second')"
+        class="guess-btn"
+      >
+        Adivina
+      </button>
+    </div>
+
+    <div class="driver-input-box">
+      <input
+        type="text"
+        [(ngModel)]="inputValues.thirdDriver"
+        (input)="onInputChange($event, 'thirdDriver')"
+        placeholder="3er Puesto"
+        class="driver-input"
+        [disabled]="!!results.thirdDriver"
+      />
+      <ul
+        *ngIf="filteredOptions.length > 0 && activeField === 'thirdDriver'"
+        class="options"
+      >
+        <li
+          *ngFor="let option of filteredOptions"
+          (click)="selectOption(option, 'thirdDriver')"
+        >
+          {{ option.name }}
+        </li>
+      </ul>
+      <button
+        *ngIf="gameMode === 'byOne' && !results.thirdDriver && !gameOver"
+        (click)="guess('driver', 'third')"
+        class="guess-btn"
+      >
+        Adivina
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTON ADIVINA TODO (solo modo normal) -->
+  <div class="action-buttons" *ngIf="gameMode === 'normal' && !gameOver">
+    <button class="guess-all-btn" (click)="guessAll()">Adivina Todo</button>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-info">
+    <p>{{ guessedCount }}/3 adivinados</p>
+  </div>
+
+  <!-- ESTADOS DE JUEGO -->
+  <app-game-won *ngIf="gameWon && gameOver"></app-game-won>
+  <app-game-lost *ngIf="gameLost && gameOver"></app-game-lost>
+  <app-surrender *ngIf="gameLost && gameOver"></app-surrender>
+</div>
