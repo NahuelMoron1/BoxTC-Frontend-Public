@@ -15,39 +15,10 @@
     <p class="date-display">{{ gamedata.date }}</p>
   </div>
 
-  <!-- IMAGENES DE MARCAS -->
-  <div class="cars-display">
-    <!-- Primer lugar - Marca -->
-    <div class="car-image-box">
-      <div
-        class="car-image-wrapper"
-        [class.revealed]="!!results.firstDriver"
-        [class.correct-wrapper]="
-          results.firstDriver && resultCorrectness.firstDriver === true
-        "
-        [class.surrender-wrapper]="
-          results.firstDriver && resultCorrectness.firstDriver === false
-        "
-      >
-        <ng-container *ngIf="results.firstDriver; else firstCarLogo">
-          <img
-            [src]="getDriverImage(results.firstDriver.image)"
-            alt="Piloto"
-            class="car-image fade-in"
-          />
-        </ng-container>
-        <ng-template #firstCarLogo>
-          <img
-            [src]="getCarImage(gamedata.firstCarImage)"
-            alt="Marca"
-            class="car-image"
-          />
-        </ng-template>
-      </div>
-    </div>
-
-    <!-- Segundo lugar - Marca -->
-    <div class="car-image-box">
+  <!-- PODIO -->
+  <div class="podium-row">
+    <!-- Segundo lugar - Izquierda (offset) -->
+    <div class="podium-block second-offset">
       <div
         class="car-image-wrapper"
         [class.revealed]="!!results.secondDriver"
@@ -73,88 +44,7 @@
           />
         </ng-template>
       </div>
-    </div>
 
-    <!-- Tercer lugar - Marca -->
-    <div class="car-image-box">
-      <div
-        class="car-image-wrapper"
-        [class.revealed]="!!results.thirdDriver"
-        [class.correct-wrapper]="
-          results.thirdDriver && resultCorrectness.thirdDriver === true
-        "
-        [class.surrender-wrapper]="
-          results.thirdDriver && resultCorrectness.thirdDriver === false
-        "
-      >
-        <ng-container *ngIf="results.thirdDriver; else thirdCarLogo">
-          <img
-            [src]="getDriverImage(results.thirdDriver.image)"
-            alt="Piloto"
-            class="car-image fade-in"
-          />
-        </ng-container>
-        <ng-template #thirdCarLogo>
-          <img
-            [src]="getCarImage(gamedata.thirdCarImage)"
-            alt="Marca"
-            class="car-image"
-          />
-        </ng-template>
-      </div>
-    </div>
-  </div>
-
-  <!-- INPUTS PARA PILOTOS -->
-  <div class="drivers-input">
-    <div class="driver-input-box">
-      <!-- Input normal o cuando es correcto -->
-      <input
-        *ngIf="!results.firstDriver || resultCorrectness.firstDriver === true"
-        type="text"
-        [(ngModel)]="inputValues.firstDriver"
-        (input)="onInputChange($event, 'firstDriver')"
-        placeholder="1er Puesto"
-        class="driver-input"
-        [class.correct]="
-          results.firstDriver && resultCorrectness.firstDriver === true
-        "
-        [disabled]="!!results.firstDriver"
-      />
-      <!-- Mostrar respuesta y respuesta correcta cuando es incorrecto -->
-      <div
-        *ngIf="results.firstDriver && resultCorrectness.firstDriver === false"
-        class="driver-answers-wrapper"
-      >
-        <div class="driver-correct-answer">
-          {{ results.firstDriver.name }}
-        </div>
-        <div class="driver-your-answer">
-          Tu respuesta: {{ inputValues.firstDriver }}
-        </div>
-      </div>
-      <ul
-        *ngIf="filteredOptions.length > 0 && activeField === 'firstDriver'"
-        class="options"
-      >
-        <li
-          *ngFor="let option of filteredOptions"
-          (click)="selectOption(option, 'firstDriver')"
-        >
-          {{ option.name }}
-        </li>
-      </ul>
-      <button
-        *ngIf="gameMode === 'byOne' && !results.firstDriver && !gameOver"
-        (click)="guess('driver', 'first')"
-        class="guess-btn"
-      >
-        Adivina
-      </button>
-    </div>
-
-    <div class="driver-input-box">
-      <!-- Input normal o cuando es correcto -->
       <input
         *ngIf="!results.secondDriver || resultCorrectness.secondDriver === true"
         type="text"
@@ -167,7 +57,6 @@
         "
         [disabled]="!!results.secondDriver"
       />
-      <!-- Mostrar respuesta y respuesta correcta cuando es incorrecto -->
       <div
         *ngIf="results.secondDriver && resultCorrectness.secondDriver === false"
         class="driver-answers-wrapper"
@@ -199,8 +88,105 @@
       </button>
     </div>
 
-    <div class="driver-input-box">
-      <!-- Input normal o cuando es correcto -->
+    <!-- Primer lugar - Centro (sin offset) -->
+    <div class="podium-block">
+      <div
+        class="car-image-wrapper"
+        [class.revealed]="!!results.firstDriver"
+        [class.correct-wrapper]="
+          results.firstDriver && resultCorrectness.firstDriver === true
+        "
+        [class.surrender-wrapper]="
+          results.firstDriver && resultCorrectness.firstDriver === false
+        "
+      >
+        <ng-container *ngIf="results.firstDriver; else firstCarLogo">
+          <img
+            [src]="getDriverImage(results.firstDriver.image)"
+            alt="Piloto"
+            class="car-image fade-in"
+          />
+        </ng-container>
+        <ng-template #firstCarLogo>
+          <img
+            [src]="getCarImage(gamedata.firstCarImage)"
+            alt="Marca"
+            class="car-image"
+          />
+        </ng-template>
+      </div>
+
+      <input
+        *ngIf="!results.firstDriver || resultCorrectness.firstDriver === true"
+        type="text"
+        [(ngModel)]="inputValues.firstDriver"
+        (input)="onInputChange($event, 'firstDriver')"
+        placeholder="1er Puesto"
+        class="driver-input"
+        [class.correct]="
+          results.firstDriver && resultCorrectness.firstDriver === true
+        "
+        [disabled]="!!results.firstDriver"
+      />
+      <div
+        *ngIf="results.firstDriver && resultCorrectness.firstDriver === false"
+        class="driver-answers-wrapper"
+      >
+        <div class="driver-correct-answer">
+          {{ results.firstDriver.name }}
+        </div>
+        <div class="driver-your-answer">
+          Tu respuesta: {{ inputValues.firstDriver }}
+        </div>
+      </div>
+      <ul
+        *ngIf="filteredOptions.length > 0 && activeField === 'firstDriver'"
+        class="options"
+      >
+        <li
+          *ngFor="let option of filteredOptions"
+          (click)="selectOption(option, 'firstDriver')"
+        >
+          {{ option.name }}
+        </li>
+      </ul>
+      <button
+        *ngIf="gameMode === 'byOne' && !results.firstDriver && !gameOver"
+        (click)="guess('driver', 'first')"
+        class="guess-btn"
+      >
+        Adivina
+      </button>
+    </div>
+
+    <!-- Tercer lugar - Derecha (offset) -->
+    <div class="podium-block second-offset">
+      <div
+        class="car-image-wrapper"
+        [class.revealed]="!!results.thirdDriver"
+        [class.correct-wrapper]="
+          results.thirdDriver && resultCorrectness.thirdDriver === true
+        "
+        [class.surrender-wrapper]="
+          results.thirdDriver && resultCorrectness.thirdDriver === false
+        "
+      >
+        <ng-container *ngIf="results.thirdDriver; else thirdCarLogo">
+          <img
+            [src]="getDriverImage(results.thirdDriver.image)"
+            alt="Piloto"
+            class="car-image fade-in"
+          />
+        </ng-container>
+        <ng-template #thirdCarLogo>
+          <img
+            [src]="getCarImage(gamedata.thirdCarImage)"
+            alt="Marca"
+            class="car-image"
+          />
+        </ng-template>
+      </div>
+
       <input
         *ngIf="!results.thirdDriver || resultCorrectness.thirdDriver === true"
         type="text"
@@ -213,7 +199,6 @@
         "
         [disabled]="!!results.thirdDriver"
       />
-      <!-- Mostrar respuesta y respuesta correcta cuando es incorrecto -->
       <div
         *ngIf="results.thirdDriver && resultCorrectness.thirdDriver === false"
         class="driver-answers-wrapper"
