@@ -160,5 +160,24 @@
         <button class="f1-play-btn" routerLink="/play/timeline">PLAY</button>
       </div>
     </div>
+
+    <div
+      class="f1-game-card"
+      [ngClass]="{
+        'f1-win': gameStatuses.guessPodiums === 'win',
+        'f1-lost': gameStatuses.guessPodiums === 'lost',
+      }"
+    >
+      <div class="f1-game-image">
+        <img src="podiums.png" alt="Podiums Game" />
+      </div>
+      <div class="f1-game-info">
+        <h3>BoxTC Podiums</h3>
+        <p>Adivina el orden de los pilotos en el podio!</p>
+        <button class="f1-play-btn" routerLink="/play/guess-podiums">
+          PLAY
+        </button>
+      </div>
+    </div>
   </div>
 </div>

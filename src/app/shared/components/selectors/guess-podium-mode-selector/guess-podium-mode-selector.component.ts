@@ -7,9 +7,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
   standalone: true,
 })
 export class GuessPodiumModeSelectorComponent {
-  @Output() guessSelected = new EventEmitter<'normal' | 'byOne'>();
+  public gameMode?: string;
+  @Output() guessSelected = new EventEmitter<string>();
 
-  selectMode(mode: 'normal' | 'byOne'): void {
-    this.guessSelected.emit(mode);
+  startGame() {
+    this.guessSelected.emit(this.gameMode);
   }
 }

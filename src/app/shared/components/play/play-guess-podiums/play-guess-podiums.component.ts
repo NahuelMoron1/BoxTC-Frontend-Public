@@ -10,8 +10,8 @@ import { GuessPodiumService } from '../../../services/guess-podium.service';
 import { GameLostComponent } from '../../game-lost/game-lost.component';
 import { GameNotFoundComponent } from '../../game-not-found/game-not-found.component';
 import { GameWonComponent } from '../../game-won/game-won.component';
+import { GuessPodiumModeSelectorComponent } from '../../selectors/guess-podium-mode-selector/guess-podium-mode-selector.component';
 import { SurrenderComponent } from '../../surrender/surrender.component';
-import { GuessPodiumModeSelectorComponent } from '../guess-podium-mode-selector/guess-podium-mode-selector.component';
 
 @Component({
   selector: 'app-play-guess-podiums',
@@ -31,7 +31,7 @@ export class PlayGuessPodiumsComponent implements OnInit {
   @Input() gameMode?: string;
   private guessPodiumService = inject(GuessPodiumService);
   private best10Service = inject(BestTensService);
-  private readonly STORAGE_KEY = 'f1-guessPodium-progress';
+  private readonly STORAGE_KEY = 'f1-guessPodiums-progress';
 
   private bffUrl?: string = environment.endpoint;
   public gamedata?: StartGuess;
@@ -120,7 +120,7 @@ export class PlayGuessPodiumsComponent implements OnInit {
       this.resultCorrectness = parsed.resultCorrectness || {};
       this.gameStarted = parsed.gameStarted;
       this.gameMode = parsed.gameMode;
-      this.gameWon = parsed.gameWon || false;
+      this.gameWon = parsed.gameWin || false;
       this.gameOver = parsed.gameOver || false;
       this.gameLost = parsed.gameLost || false;
 
@@ -361,9 +361,10 @@ export class PlayGuessPodiumsComponent implements OnInit {
       gameID: this.gameID,
       gameStarted: this.gameStarted,
       gameMode: this.gameMode,
-      gameWon: this.gameWon,
+      gameWin: this.gameWon,
       gameOver: this.gameOver,
       gameLost: this.gameLost,
+      date: this.gamedata?.date,
       results: this.results,
       selectedIds: this.selectedIds,
       inputValues: this.inputValues,
