@@ -12,7 +12,6 @@
   <!-- TITULO -->
   <div class="game-title">
     <h1>{{ gamedata.title }}</h1>
-    <p class="date-display">{{ gamedata.date }}</p>
   </div>
 
   <!-- PODIO -->
@@ -234,6 +233,7 @@
   <!-- BOTON ADIVINA TODO (solo modo normal) -->
   <div class="action-buttons" *ngIf="gameMode === 'normal' && !gameOver">
     <button class="guess-all-btn" (click)="guessAll()">Adivina Todo</button>
+    <app-surrender *ngIf="!gameOver"></app-surrender>
   </div>
 
   <!-- PROGRESS -->
@@ -244,5 +244,4 @@
   <!-- ESTADOS DE JUEGO -->
   <app-game-won *ngIf="gameWon && gameOver"></app-game-won>
   <app-game-lost *ngIf="gameLost && gameOver"></app-game-lost>
-  <app-surrender *ngIf="gameLost && gameOver"></app-surrender>
 </div>

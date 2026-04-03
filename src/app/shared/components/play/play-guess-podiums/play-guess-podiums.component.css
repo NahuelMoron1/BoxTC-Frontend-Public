@@ -1,5 +1,5 @@
 .guess-play-container {
-  max-width: 1000px;
+  max-width: 800px;
   margin: 40px auto;
   padding: 32px 24px;
   background: linear-gradient(135deg, #0a1424 0%, #1a2a3a 100%);
@@ -37,7 +37,6 @@
   font-weight: 300;
 }
 
-/* PODIUM LAYOUT */
 .podium-row {
   display: flex;
   justify-content: center;
@@ -90,7 +89,6 @@
     inset 0 0 15px rgba(192, 230, 0, 0.1);
 }
 
-/* CORRECT STATE - GREEN (similar to H2H) */
 .car-image-wrapper.correct-wrapper {
   border: 4px solid #00ff88;
   box-shadow:
@@ -99,7 +97,6 @@
   background: linear-gradient(135deg, #0f2f0f 0%, #1a4a1a 100%);
 }
 
-/* INCORRECT STATE - RED (similar to H2H) */
 .car-image-wrapper.surrender-wrapper {
   border: 4px solid #ff2d2d;
   box-shadow:
@@ -133,13 +130,12 @@
   }
 }
 
-/* INPUTS PARA PILOTOS */
-
-/* INPUTS PARA PILOTOS EN PODIO */
 .driver-input-box {
   width: 100%;
   position: relative;
-  display: contents;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .driver-input {
@@ -178,7 +174,6 @@
   cursor: not-allowed;
 }
 
-/* CORRECT STATE - GREEN */
 .driver-input.correct {
   border: 3px solid #00ff88;
   box-shadow:
@@ -196,12 +191,12 @@
   text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
 }
 
-/* RESULTADO CUANDO FALLAS - MUESTRA RESPUESTA CORRECTA Y TU RESPUESTA EN CUADROS SEPARADOS */
 .driver-answers-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: center;
 }
 
 .driver-correct-answer {
@@ -230,6 +225,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .driver-your-answer {
@@ -259,9 +255,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
-/* OPCIONES AUTOCOMPLETE */
 .options {
   position: absolute;
   top: 100%;
@@ -294,10 +290,6 @@
   text-align: center;
 }
 
-.options li:last-child {
-  border-bottom: none;
-}
-
 .options li:hover {
   background: linear-gradient(
     90deg,
@@ -309,7 +301,6 @@
   box-shadow: inset 2px 0 0 #c0e600;
 }
 
-/* BOTON ADIVINA (byOne mode) */
 .guess-btn {
   width: 100%;
   padding: 8px 0;
@@ -326,20 +317,8 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   box-shadow: 0 4px 12px rgba(192, 230, 0, 0.2);
-  order: 3;
 }
 
-.guess-btn:hover {
-  background-color: #d4ff33;
-  box-shadow: 0 6px 20px rgba(212, 255, 51, 0.4);
-  transform: translateY(-3px);
-}
-
-.guess-btn:active {
-  transform: translateY(-1px);
-}
-
-/* ACTION BUTTONS */
 .action-buttons {
   display: flex;
   justify-content: center;
@@ -365,250 +344,93 @@
   overflow: hidden;
 }
 
-.guess-all-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: left 0.5s ease;
-}
-
-.guess-all-btn:hover {
-  background: linear-gradient(135deg, #d4ff33 0%, #e0ff66 100%);
-  box-shadow: 0 10px 40px rgba(192, 230, 0, 0.5);
-  transform: translateY(-4px);
-}
-
-.guess-all-btn:hover::before {
-  left: 100%;
-}
-
-.guess-all-btn:active {
-  transform: translateY(-1px);
-}
-
-/* PROGRESS */
 .progress-info {
   text-align: center;
   color: #c0e600;
   font-weight: bold;
   font-size: 1.15rem;
   letter-spacing: 1px;
-  margin: 100px 0 20px 0;
+  margin: 60px 0 20px 0;
   text-shadow: 0 0 10px rgba(192, 230, 0, 0.3);
-  padding: 16px;
+  padding: 8px;
   background: rgba(192, 230, 0, 0.05);
   border-radius: 8px;
   border: 1px solid rgba(192, 230, 0, 0.15);
 }
 
-.progress-info p {
-  margin: 0;
+@media (max-width: 992px) {
+  .podium-row {
+    gap: 1.5rem;
+  }
+  .podium-block {
+    flex: 0 1 140px;
+  }
+  .car-image-wrapper {
+    width: 140px;
+    height: 140px;
+  }
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
   .guess-play-container {
     max-width: 95%;
     padding: 20px 16px;
-    margin: 20px auto;
   }
-
-  .game-title {
-    margin-bottom: 30px;
-    padding-bottom: 15px;
-  }
-
   .game-title h1 {
     font-size: 2rem;
-    letter-spacing: 2px;
   }
-
-  .date-display {
-    font-size: 0.95rem;
-  }
-
   .podium-row {
+    flex-wrap: wrap;
     gap: 2rem;
-    margin-top: 1.5rem;
   }
-
   .podium-block {
-    flex: 0 1 130px;
+    flex: 0 1 30%;
+    min-width: 120px;
   }
-
+  .podium-block.second-offset {
+    transform: translateY(20px);
+  }
   .car-image-wrapper {
-    width: 130px;
-    height: 130px;
-    border-width: 3px;
-    margin-bottom: 12px;
+    width: 120px;
+    height: 120px;
   }
-
-  .driver-input {
-    font-size: 0.85rem;
-    padding: 10px;
-    min-height: 36px;
-  }
-
-  .driver-answers-wrapper {
-    gap: 8px;
-  }
-
+  .driver-input,
   .driver-correct-answer {
-    padding: 10px;
-    font-size: 0.85rem;
-    min-height: 36px;
-  }
-
-  .driver-your-answer {
-    padding: 10px;
-    font-size: 0.7rem;
-    min-height: 32px;
-  }
-
-  .driver-input {
-    font-size: 0.9rem;
-    padding: 10px;
-    min-height: 38px;
-  }
-
-  .guess-btn {
-    padding: 7px 0;
     font-size: 0.8rem;
-    margin-top: 6px;
-  }
-
-  .guess-all-btn {
-    padding: 14px 35px;
-    font-size: 1rem;
-    letter-spacing: 1px;
-  }
-
-  .progress-info {
-    font-size: 1rem;
-    margin: 80px 0 15px 0;
-    padding: 12px;
-  }
-
-  .driver-answers-wrapper {
-    gap: 8px;
-  }
-
-  .driver-correct-answer {
-    padding: 10px;
-    font-size: 0.85rem;
-    min-height: 36px;
-  }
-
-  .driver-your-answer {
-    padding: 10px;
-    font-size: 0.7rem;
-    min-height: 32px;
   }
 }
 
 @media (max-width: 480px) {
-  .guess-play-container {
-    max-width: 100%;
-    padding: 16px 12px;
-    margin: 15px auto;
-    border-radius: 12px;
-  }
-
-  .game-title {
-    margin-bottom: 25px;
-    padding-bottom: 12px;
-  }
-
-  .game-title h1 {
-    font-size: 1.5rem;
-    letter-spacing: 1.5px;
-    margin-bottom: 6px;
-  }
-
-  .date-display {
-    font-size: 0.9rem;
-  }
-
   .podium-row {
-    gap: 1.5rem;
-    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
   }
-
   .podium-block {
-    flex: 0 1 100px;
+    width: 100%;
+    max-width: 220px;
   }
-
+  .podium-block.second-offset {
+    transform: translateY(0);
+    order: 2;
+  }
   .car-image-wrapper {
-    width: 100px;
-    height: 100px;
-    border-width: 2px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    width: 180px;
+    height: 130px;
   }
-
-  .driver-input {
-    padding: 10px 8px;
-    font-size: 0.8rem;
-    min-height: 34px;
-  }
-
-  .driver-answers-wrapper {
-    gap: 7px;
-  }
-
+  .driver-input,
   .driver-correct-answer {
-    padding: 8px;
-    font-size: 0.8rem;
-    min-height: 34px;
-  }
-
-  .driver-your-answer {
-    padding: 8px;
-    font-size: 0.65rem;
-    min-height: 30px;
-  }
-
-  .guess-btn {
-    padding: 7px 0;
-    font-size: 0.75rem;
-    margin-top: 6px;
-  }
-
-  .guess-all-btn {
-    width: auto;
-    padding: 12px 30px;
-    font-size: 0.95rem;
-    letter-spacing: 1px;
-  }
-
-  .progress-info {
-    font-size: 0.95rem;
-    margin: 60px 0 15px 0;
+    font-size: 0.9rem;
     padding: 12px;
   }
-
-  .driver-answers-wrapper {
-    gap: 7px;
+  .guess-all-btn {
+    width: 100%;
+    padding: 14px;
   }
-
-  .driver-correct-answer {
-    padding: 8px;
-    font-size: 0.8rem;
-    min-height: 34px;
+  .action-buttons {
+    margin-top: 40px;
   }
-
-  .driver-your-answer {
-    padding: 8px;
-    font-size: 0.65rem;
-    min-height: 30px;
+  .progress-info {
+    margin-top: 40px;
   }
 }
