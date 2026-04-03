@@ -19,7 +19,16 @@
   <div class="cars-display">
     <!-- Primer lugar - Marca -->
     <div class="car-image-box">
-      <div class="car-image-wrapper" [class.revealed]="!!results.firstDriver">
+      <div
+        class="car-image-wrapper"
+        [class.revealed]="!!results.firstDriver"
+        [class.correct-wrapper]="
+          results.firstDriver && resultCorrectness.firstDriver === true
+        "
+        [class.surrender-wrapper]="
+          results.firstDriver && resultCorrectness.firstDriver === false
+        "
+      >
         <ng-container *ngIf="results.firstDriver; else firstCarLogo">
           <img
             [src]="getDriverImage(results.firstDriver.image)"
@@ -39,7 +48,16 @@
 
     <!-- Segundo lugar - Marca -->
     <div class="car-image-box">
-      <div class="car-image-wrapper" [class.revealed]="!!results.secondDriver">
+      <div
+        class="car-image-wrapper"
+        [class.revealed]="!!results.secondDriver"
+        [class.correct-wrapper]="
+          results.secondDriver && resultCorrectness.secondDriver === true
+        "
+        [class.surrender-wrapper]="
+          results.secondDriver && resultCorrectness.secondDriver === false
+        "
+      >
         <ng-container *ngIf="results.secondDriver; else secondCarLogo">
           <img
             [src]="getDriverImage(results.secondDriver.image)"
@@ -59,7 +77,16 @@
 
     <!-- Tercer lugar - Marca -->
     <div class="car-image-box">
-      <div class="car-image-wrapper" [class.revealed]="!!results.thirdDriver">
+      <div
+        class="car-image-wrapper"
+        [class.revealed]="!!results.thirdDriver"
+        [class.correct-wrapper]="
+          results.thirdDriver && resultCorrectness.thirdDriver === true
+        "
+        [class.surrender-wrapper]="
+          results.thirdDriver && resultCorrectness.thirdDriver === false
+        "
+      >
         <ng-container *ngIf="results.thirdDriver; else thirdCarLogo">
           <img
             [src]="getDriverImage(results.thirdDriver.image)"
@@ -87,6 +114,12 @@
         (input)="onInputChange($event, 'firstDriver')"
         placeholder="1er Puesto"
         class="driver-input"
+        [class.correct]="
+          results.firstDriver && resultCorrectness.firstDriver === true
+        "
+        [class.surrender]="
+          results.firstDriver && resultCorrectness.firstDriver === false
+        "
         [disabled]="!!results.firstDriver"
       />
       <ul
@@ -116,6 +149,12 @@
         (input)="onInputChange($event, 'secondDriver')"
         placeholder="2do Puesto"
         class="driver-input"
+        [class.correct]="
+          results.secondDriver && resultCorrectness.secondDriver === true
+        "
+        [class.surrender]="
+          results.secondDriver && resultCorrectness.secondDriver === false
+        "
         [disabled]="!!results.secondDriver"
       />
       <ul
@@ -145,6 +184,12 @@
         (input)="onInputChange($event, 'thirdDriver')"
         placeholder="3er Puesto"
         class="driver-input"
+        [class.correct]="
+          results.thirdDriver && resultCorrectness.thirdDriver === true
+        "
+        [class.surrender]="
+          results.thirdDriver && resultCorrectness.thirdDriver === false
+        "
         [disabled]="!!results.thirdDriver"
       />
       <ul

@@ -85,8 +85,15 @@ export class PlayGuessPodiumsComponent implements OnInit {
     | null = null;
 
   // Guessable fields count for progress
-  guessableFields = 6; // 3 drivers + 3 cars
+  guessableFields = 3; // Only 3 drivers
   guessedCount = 0;
+
+  // Track if each result is correct (true) or incorrect (false)
+  resultCorrectness = {
+    firstDriver: undefined as boolean | undefined,
+    secondDriver: undefined as boolean | undefined,
+    thirdDriver: undefined as boolean | undefined,
+  };
 
   async ngOnInit() {
     this.gamedata = await this.guessPodiumService.getGameTC();
@@ -110,6 +117,7 @@ export class PlayGuessPodiumsComponent implements OnInit {
       this.results = parsed.results || {};
       this.selectedIds = parsed.selectedIds || {};
       this.inputValues = parsed.inputValues || {};
+      this.resultCorrectness = parsed.resultCorrectness || {};
       this.gameStarted = parsed.gameStarted;
       this.gameMode = parsed.gameMode;
       this.gameWon = parsed.gameWon || false;
@@ -128,7 +136,14 @@ export class PlayGuessPodiumsComponent implements OnInit {
   }
 
   updateGuessedCount() {
-    this.guessedCount = Object.values(this.results).filter((v) => v).length;
+    // Only count drivers that were guessed CORRECTLY
+    const correctCount = [
+      this.resultCorrectness.firstDriver,
+      this.resultCorrectness.secondDriver,
+      this.resultCorrectness.thirdDriver,
+    ].filter((v) => v === true).length;
+
+    this.guessedCount = correctCount;
   }
 
   async checkLost() {
@@ -309,17 +324,13 @@ export class PlayGuessPodiumsComponent implements OnInit {
       return;
     }
 
-    // Populate results
+    // Populate results - only drivers and determine correctness
     this.results.firstDriver = {
       name:
         finalData.FirstDriver?.firstname! +
         ' ' +
         finalData.FirstDriver?.lastname!,
       image: finalData.FirstDriver?.image!,
-    };
-    this.results.firstCar = {
-      name: finalData.FirstCar?.name!,
-      image: finalData.FirstCar?.image!,
     };
     this.results.secondDriver = {
       name:
@@ -328,10 +339,6 @@ export class PlayGuessPodiumsComponent implements OnInit {
         finalData.SecondDriver?.lastname!,
       image: finalData.SecondDriver?.image!,
     };
-    this.results.secondCar = {
-      name: finalData.SecondCar?.name!,
-      image: finalData.SecondCar?.image!,
-    };
     this.results.thirdDriver = {
       name:
         finalData.ThirdDriver?.firstname! +
@@ -339,11 +346,13 @@ export class PlayGuessPodiumsComponent implements OnInit {
         finalData.ThirdDriver?.lastname!,
       image: finalData.ThirdDriver?.image!,
     };
-    this.results.thirdCar = {
-      name: finalData.ThirdCar?.name!,
-      image: finalData.ThirdCar?.image!,
-    };
 
+    // Use the correctness values returned by the backend (they're already boolean)
+    this.resultCorrectness.firstDriver = data.firstDriver;
+    this.resultCorrectness.secondDriver = data.secondDriver;
+    this.resultCorrectness.thirdDriver = data.thirdDriver;
+
+    this.updateGuessedCount();
     this.saveProgress();
   }
 
@@ -358,6 +367,7 @@ export class PlayGuessPodiumsComponent implements OnInit {
       results: this.results,
       selectedIds: this.selectedIds,
       inputValues: this.inputValues,
+      resultCorrectness: this.resultCorrectness,
     };
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(progress));
   }

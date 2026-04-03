@@ -82,6 +82,24 @@
     inset 0 0 15px rgba(192, 230, 0, 0.1);
 }
 
+/* CORRECT STATE - GREEN (similar to H2H) */
+.car-image-wrapper.correct-wrapper {
+  border: 4px solid #00ff88;
+  box-shadow:
+    0 0 30px rgba(0, 255, 136, 0.8),
+    inset 0 0 20px rgba(0, 255, 136, 0.15);
+  background: linear-gradient(135deg, #0f2f0f 0%, #1a4a1a 100%);
+}
+
+/* INCORRECT STATE - RED (similar to H2H) */
+.car-image-wrapper.surrender-wrapper {
+  border: 4px solid #ff2d2d;
+  box-shadow:
+    0 0 30px rgba(255, 45, 45, 0.8),
+    inset 0 0 20px rgba(255, 45, 45, 0.15);
+  background: linear-gradient(135deg, #3f0f0f 0%, #5a1a1a 100%);
+}
+
 .car-image {
   width: 100%;
   height: 100%;
@@ -159,6 +177,34 @@
 .driver-input:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* CORRECT STATE - GREEN */
+.driver-input.correct {
+  border: 3px solid #00ff88;
+  box-shadow:
+    0 0 20px rgba(0, 255, 136, 0.7),
+    inset 0 0 10px rgba(0, 255, 136, 0.2);
+  background: linear-gradient(135deg, rgba(15, 47, 15, 0.95) 0%, rgba(26, 74, 26, 0.95) 100%);
+  color: #00ff88;
+  transition: all 0.4s ease;
+  font-size: 1rem;
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* INCORRECT STATE - RED */
+.driver-input.surrender {
+  border: 3px solid #ff2d2d;
+  box-shadow:
+    0 0 20px rgba(255, 45, 45, 0.7),
+    inset 0 0 10px rgba(255, 45, 45, 0.2);
+  background: linear-gradient(135deg, rgba(63, 15, 15, 0.95) 0%, rgba(90, 26, 26, 0.95) 100%);
+  color: #ff2d2d;
+  transition: all 0.4s ease;
+  font-size: 1rem;
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(255, 45, 45, 0.5);
 }
 
 /* OPCIONES AUTOCOMPLETE */
