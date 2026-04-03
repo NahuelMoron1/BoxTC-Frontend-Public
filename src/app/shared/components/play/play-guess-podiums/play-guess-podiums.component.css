@@ -185,7 +185,11 @@
   box-shadow:
     0 0 20px rgba(0, 255, 136, 0.7),
     inset 0 0 10px rgba(0, 255, 136, 0.2);
-  background: linear-gradient(135deg, rgba(15, 47, 15, 0.95) 0%, rgba(26, 74, 26, 0.95) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 47, 15, 0.95) 0%,
+    rgba(26, 74, 26, 0.95) 100%
+  );
   color: #00ff88;
   transition: all 0.4s ease;
   font-size: 1rem;
@@ -199,7 +203,11 @@
   box-shadow:
     0 0 20px rgba(255, 45, 45, 0.7),
     inset 0 0 10px rgba(255, 45, 45, 0.2);
-  background: linear-gradient(135deg, rgba(63, 15, 15, 0.95) 0%, rgba(90, 26, 26, 0.95) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(63, 15, 15, 0.95) 0%,
+    rgba(90, 26, 26, 0.95) 100%
+  );
   color: #ff2d2d;
   transition: all 0.4s ease;
   font-size: 1rem;
