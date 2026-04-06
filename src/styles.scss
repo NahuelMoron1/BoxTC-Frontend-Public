@@ -71,3 +71,10 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none; /* Bloquea el menú en iOS */
+  pointer-events: none;
+}

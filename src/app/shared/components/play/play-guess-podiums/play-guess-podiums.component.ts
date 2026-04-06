@@ -144,6 +144,11 @@ export class PlayGuessPodiumsComponent implements OnInit {
     ].filter((v) => v === true).length;
 
     this.guessedCount = correctCount;
+
+    if (this.guessedCount === 3) {
+      this.gameOver = true;
+      this.gameWon = true;
+    }
   }
 
   async checkLost() {
@@ -271,13 +276,13 @@ export class PlayGuessPodiumsComponent implements OnInit {
       selectedID,
     );
 
-    // Determinar si es correcto basado en si data existe
-    const isCorrect = !!data;
+    let isCorrect = false;
+
+    if (data && data.data) {
+      isCorrect = true;
+    }
 
     if (!isCorrect) {
-      // Cuando es incorrecto, obtenemos la respuesta correcta llamando a guessAll
-      // IMPORTANTE: Asegúrate de que el backend retorna la respuesta correcta incluso en fallo
-      // Por ahora asumimos que data contiene la respuesta correcta o necesitamos otra lógica
       Swal.fire({
         icon: 'error',
         title: 'Incorrecto',
@@ -285,9 +290,6 @@ export class PlayGuessPodiumsComponent implements OnInit {
         background: '#0d0d0d',
         color: '#ff2d55',
       });
-      // Marcar como intento fallido pero no retornar
-      // Necesitamos obtener la respuesta correcta del backend
-      // Hacer una llamada para obtener la respuesta correcta
     }
 
     // Guardar el resultado
