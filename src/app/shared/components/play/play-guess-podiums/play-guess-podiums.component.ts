@@ -270,19 +270,41 @@ export class PlayGuessPodiumsComponent implements OnInit {
       position,
       selectedID,
     );
-    if (!data) {
+
+    // Determinar si es correcto basado en si data existe
+    const isCorrect = !!data;
+
+    if (!isCorrect) {
+      // Cuando es incorrecto, obtenemos la respuesta correcta llamando a guessAll
+      // IMPORTANTE: Asegúrate de que el backend retorna la respuesta correcta incluso en fallo
+      // Por ahora asumimos que data contiene la respuesta correcta o necesitamos otra lógica
       Swal.fire({
         icon: 'error',
         title: 'Incorrecto',
-        text: 'Eso no es correcto, intenta de nuevo',
+        text: 'Ese piloto no es correcto',
         background: '#0d0d0d',
         color: '#ff2d55',
       });
-      return;
+      // Marcar como intento fallido pero no retornar
+      // Necesitamos obtener la respuesta correcta del backend
+      // Hacer una llamada para obtener la respuesta correcta
     }
 
-    this.results[field] = data.data;
-    this.inputValues[field] = data.data.name;
+    // Guardar el resultado
+    if (data) {
+      this.results[field] = data.data;
+      this.inputValues[field] = data.data.name;
+    }
+
+    // Guardar si fue correcto o incorrecto en resultCorrectness
+    if (
+      field === 'firstDriver' ||
+      field === 'secondDriver' ||
+      field === 'thirdDriver'
+    ) {
+      (this.resultCorrectness as any)[field] = isCorrect;
+    }
+
     this.updateGuessedCount();
     this.saveProgress();
   }

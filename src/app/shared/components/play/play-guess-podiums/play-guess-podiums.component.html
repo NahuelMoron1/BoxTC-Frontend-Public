@@ -54,7 +54,10 @@
         [class.correct]="
           results.secondDriver && resultCorrectness.secondDriver === true
         "
-        [disabled]="!!results.secondDriver"
+        [disabled]="
+          !!results.secondDriver ||
+          (gameMode === 'byOne' && resultCorrectness.secondDriver === false)
+        "
       />
       <div
         *ngIf="results.secondDriver && resultCorrectness.secondDriver === false"
@@ -125,7 +128,10 @@
         [class.correct]="
           results.firstDriver && resultCorrectness.firstDriver === true
         "
-        [disabled]="!!results.firstDriver"
+        [disabled]="
+          !!results.firstDriver ||
+          (gameMode === 'byOne' && resultCorrectness.firstDriver === false)
+        "
       />
       <div
         *ngIf="results.firstDriver && resultCorrectness.firstDriver === false"
@@ -196,7 +202,10 @@
         [class.correct]="
           results.thirdDriver && resultCorrectness.thirdDriver === true
         "
-        [disabled]="!!results.thirdDriver"
+        [disabled]="
+          !!results.thirdDriver ||
+          (gameMode === 'byOne' && resultCorrectness.thirdDriver === false)
+        "
       />
       <div
         *ngIf="results.thirdDriver && resultCorrectness.thirdDriver === false"
