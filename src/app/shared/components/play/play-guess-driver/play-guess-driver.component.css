@@ -10,6 +10,7 @@
     inset 0 0 20px rgba(192, 230, 0, 0.05);
   font-family: "Orbitron", sans-serif;
   backdrop-filter: blur(10px);
+  box-sizing: border-box;
 }
 
 .game-title {
@@ -35,6 +36,31 @@
   margin: 10px 0 0 0;
   letter-spacing: 1px;
   font-weight: 300;
+}
+
+/* Silueta de persona */
+.silhouette-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(192, 230, 0, 0.03);
+  border-radius: 8px;
+}
+
+.silhouette {
+  filter: drop-shadow(0 0 10px rgba(192, 230, 0, 0.2));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 .hints-container {
@@ -97,6 +123,7 @@
   letter-spacing: 0.5px;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   min-height: 40px;
+  box-sizing: border-box;
 }
 
 .driver-input::placeholder {
@@ -129,6 +156,7 @@
   backdrop-filter: blur(5px);
   width: 100%;
   top: 100%;
+  box-sizing: border-box;
 }
 
 .driver-list li {
@@ -198,9 +226,66 @@
   transform: translateY(0);
 }
 
+/* Mensaje de incorrecto con animación */
+.incorrect-message {
+  margin: 20px 0;
+  padding: 15px 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 45, 85, 0.15),
+    rgba(255, 100, 120, 0.1)
+  );
+  border: 2px solid #ff2d55;
+  border-radius: 8px;
+  color: #ff2d55;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px rgba(255, 45, 85, 0.3);
+  animation: slideInDown 0.3s ease-out;
+}
+
+.animated-shake {
+  animation:
+    slideInDown 0.3s ease-out,
+    shake 0.5s ease-in-out 0.3s;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
 .attempt-counter {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   padding: 10px;
   background: rgba(192, 230, 0, 0.05);
   border-radius: 6px;
@@ -212,6 +297,62 @@
   margin: 0;
   font-size: 0.95rem;
   font-weight: bold;
+}
+
+/* Pilotos intentados */
+.attempted-drivers {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(255, 100, 130, 0.05);
+  border: 1px solid rgba(255, 45, 85, 0.2);
+  border-radius: 8px;
+}
+
+.attempted-title {
+  color: #ff2d55;
+  margin: 0 0 10px 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.drivers-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.driver-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(255, 45, 85, 0.15);
+  border: 1px solid #ff2d55;
+  border-radius: 20px;
+  color: #ff2d55;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  animation: popIn 0.4s ease-out;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .action-buttons {
@@ -293,6 +434,7 @@
   .guess-driver-container {
     margin: 20px auto;
     padding: 20px 16px;
+    box-sizing: border-box;
   }
 
   .game-title h1 {
@@ -301,5 +443,15 @@
 
   .stats-info {
     grid-template-columns: 1fr;
+  }
+
+  .driver-input {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+
+  .driver-tag {
+    font-size: 0.8rem;
+    padding: 5px 10px;
   }
 }

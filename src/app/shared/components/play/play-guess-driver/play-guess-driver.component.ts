@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
-import Swal from 'sweetalert2';
 import { environment } from '../../../../environments/environment';
 import { GuessDriverGameData } from '../../../models/GuessDriver';
 import { BestTensService } from '../../../services/best-tens.service';
@@ -57,6 +56,11 @@ export class PlayGuessDriverComponent implements OnInit {
   public currentHintIndex: number = 0;
   public attemptCount: number = 0;
   public maxHints: number = 6;
+  public attemptedDrivers: { id: string; name: string }[] = [];
+
+  // Mensajes y animaciones
+  public showIncorrectMessage: boolean = false;
+  public incorrectMessageTimer: any;
 
   // Respuesta correcta
   public correctAnswer?: any;
@@ -103,6 +107,7 @@ export class PlayGuessDriverComponent implements OnInit {
       this.hints = parsed.hints || [];
       this.currentHintIndex = parsed.currentHintIndex || 0;
       this.attemptCount = parsed.attemptCount || 0;
+      this.attemptedDrivers = parsed.attemptedDrivers || [];
       this.correctAnswer = parsed.correctAnswer || undefined;
 
       if (this.gameStarted && !this.gameOver && this.hints.length === 0) {
@@ -141,13 +146,6 @@ export class PlayGuessDriverComponent implements OnInit {
 
   async guessDriver() {
     if (!this.selectedDriverId || !this.gameID) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Selecciona un piloto',
-        text: 'Por favor selecciona un piloto antes de adivinar',
-        background: '#0d0d0d',
-        color: '#ffe32d',
-      });
       return;
     }
 
@@ -157,13 +155,6 @@ export class PlayGuessDriverComponent implements OnInit {
     );
 
     if (!response) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Ocurrió un error al procesar tu adivinanza',
-        background: '#0d0d0d',
-        color: '#ff2d55',
-      });
       return;
     }
 
@@ -177,30 +168,26 @@ export class PlayGuessDriverComponent implements OnInit {
 
     // Adivinanza incorrecta
     this.attemptCount++;
+    if (this.selectedDriverId && this.selectedDriver) {
+      this.attemptedDrivers.push({
+        id: this.selectedDriverId,
+        name: this.selectedDriver,
+      });
+    }
     this.driverInput = '';
     this.selectedDriver = '';
     this.selectedDriverId = '';
 
-    Swal.fire({
-      icon: 'error',
-      title: 'Incorrecto',
-      text: 'Ese no es el piloto. ¡Intenta nuevamente!',
-      background: '#0d0d0d',
-      color: '#ff2d55',
-    });
+    // Mostrar mensaje de error en la página con animación
+    this.showIncorrectMessage = true;
+    clearTimeout(this.incorrectMessageTimer);
+    this.incorrectMessageTimer = setTimeout(() => {
+      this.showIncorrectMessage = false;
+    }, 3000);
 
     // Obtener la siguiente pista
     if (this.currentHintIndex < this.maxHints - 1) {
       await this.getNextHint();
-    } else {
-      // Sin más pistas
-      Swal.fire({
-        icon: 'info',
-        title: 'Sin más pistas',
-        text: 'Ya no hay más pistas disponibles. ¡Sigue intentando!',
-        background: '#0d0d0d',
-        color: '#c0e600',
-      });
     }
 
     this.saveProgress();
@@ -251,6 +238,7 @@ export class PlayGuessDriverComponent implements OnInit {
       hints: this.hints,
       currentHintIndex: this.currentHintIndex,
       attemptCount: this.attemptCount,
+      attemptedDrivers: this.attemptedDrivers,
       correctAnswer: this.correctAnswer,
     };
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(progress));

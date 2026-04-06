@@ -12,9 +12,9 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MyArticlesPageComponent } from './pages/my-articles-page/my-articles-page.component';
 import { NewsDetailsPageComponent } from './pages/news-details-page/news-details-page.component';
 import { NewsPageComponent } from './pages/news-page/news-page.component';
+import { PlayGuessDriverPageComponent } from './pages/play-guess-driver-page/play-guess-driver-page.component';
 import { PlayTimelinePageComponent } from './pages/play-timeline-page/play-timeline-page.component';
 import { WordleComponent } from './pages/wordle/wordle.component';
-import { PlayGuessDriverComponent } from './shared/components/play/play-guess-driver/play-guess-driver.component';
 
 export const routes: Routes = [
   //main menu
@@ -26,7 +26,7 @@ export const routes: Routes = [
   { path: 'play/impostor', component: ImpostorGameComponent },
   { path: 'play/connections', component: ConnectionsGameComponent },
   { path: 'play/guess-podiums', component: GuessPodiumsPageComponent },
-  { path: 'play/guess-driver', component: PlayGuessDriverComponent },
+  { path: 'play/guess-driver', component: PlayGuessDriverPageComponent },
   //{ path: 'play/guess-teams', component: GuessTeamsPageComponent },
   //{ path: 'play/h2h', component: H2hGameComponent },
   //{ path: 'play/guess-careers', component: GuessCareersPageComponent },
