@@ -1,0 +1,103 @@
+<app-guess-driver-mode-selector
+  *ngIf="!gameStarted && gamedata"
+  (startGame)="startGame()"
+></app-guess-driver-mode-selector>
+
+<app-game-not-found
+  *ngIf="loaded && !gamedata?.id"
+  [gameName]="'Guess Driver'"
+></app-game-not-found>
+
+<div class="guess-driver-container" *ngIf="gamedata && gameStarted">
+  <!-- TITULO -->
+  <div class="game-title">
+    <h1>Adivina el Piloto</h1>
+    <p class="season-info">Temporada {{ season }}</p>
+  </div>
+
+  <!-- PISTAS -->
+  <div class="hints-container">
+    <div class="hint-box" *ngFor="let hint of hints">
+      <p>{{ hint }}</p>
+    </div>
+  </div>
+
+  <!-- BUSCADOR DE PILOTOS -->
+  <div class="driver-search-container" *ngIf="!gameOver">
+    <div class="search-wrapper">
+      <input
+        type="text"
+        [(ngModel)]="driverInput"
+        (input)="onInputChange($event)"
+        placeholder="Escribe el nombre del piloto..."
+        class="driver-input"
+      />
+      <ul *ngIf="filteredDrivers.length > 0 && activeField" class="driver-list">
+        <li
+          *ngFor="let driver of filteredDrivers"
+          (click)="selectDriver(driver)"
+        >
+          {{ driver.name }}
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedDriver" class="selected-driver">
+      <p>
+        Seleccionado: <strong>{{ selectedDriver }}</strong>
+      </p>
+      <button (click)="guessDriver()" class="guess-btn">Adivinar</button>
+    </div>
+  </div>
+
+  <!-- INTENTO COUNTER -->
+  <div class="attempt-counter" *ngIf="!gameOver">
+    <p>Intentos: {{ attemptCount }}</p>
+  </div>
+
+  <!-- BOTÓN RENDIRSE -->
+  <div class="action-buttons" *ngIf="!gameOver">
+    <app-surrender (onSurrender)="surrender()"></app-surrender>
+  </div>
+
+  <!-- RESULTADO CUANDO GANA -->
+  <app-game-won *ngIf="gameWon && gameOver"></app-game-won>
+
+  <!-- RESULTADO CUANDO PIERDE -->
+  <app-game-lost *ngIf="gameLost && gameOver"></app-game-lost>
+
+  <!-- INFORMACIÓN CORRECTA -->
+  <div *ngIf="correctAnswer && gameOver" class="correct-answer-info">
+    <div class="answer-card">
+      <img
+        *ngIf="correctAnswer.driver?.image"
+        [src]="environment.endpoint + correctAnswer.driver.image + '.jpg'"
+        alt="Piloto"
+        class="driver-image"
+      />
+      <h2>
+        {{ correctAnswer.driver?.firstname }}
+        {{ correctAnswer.driver?.lastname }}
+      </h2>
+      <p class="season-label">Temporada {{ correctAnswer.season }}</p>
+
+      <div class="stats-info">
+        <div class="stat" *ngIf="correctAnswer.brand">
+          <strong>Marca:</strong> {{ correctAnswer.brand.name }}
+        </div>
+        <div class="stat" *ngIf="correctAnswer.team">
+          <strong>Equipo:</strong> {{ correctAnswer.team }}
+        </div>
+        <div class="stat" *ngIf="correctAnswer.podiums > 0">
+          <strong>Podios:</strong> {{ correctAnswer.podiums }}
+        </div>
+        <div class="stat" *ngIf="correctAnswer.wins > 0">
+          <strong>Victorias:</strong> {{ correctAnswer.wins }}
+        </div>
+        <div class="stat" *ngIf="correctAnswer.champPos">
+          <strong>Posición en Campeonato:</strong> {{ correctAnswer.champPos }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
