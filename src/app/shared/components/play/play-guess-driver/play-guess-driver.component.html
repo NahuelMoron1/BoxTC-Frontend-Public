@@ -16,7 +16,7 @@
   </div>
 
   <!-- SILUETA DE PERSONA -->
-  <div class="silhouette-container">
+  <div class="silhouette-container" *ngIf="!gameWon">
     <svg
       width="100"
       height="100"
@@ -42,7 +42,7 @@
   </div>
 
   <!-- PISTAS -->
-  <div class="hints-container">
+  <div class="hints-container" *ngIf="!gameWon">
     <div class="hint-box" *ngFor="let hint of hints">
       <p>{{ hint }}</p>
     </div>
@@ -104,12 +104,6 @@
     <app-surrender (onSurrender)="surrender()"></app-surrender>
   </div>
 
-  <!-- RESULTADO CUANDO GANA -->
-  <app-game-won *ngIf="gameWon && gameOver"></app-game-won>
-
-  <!-- RESULTADO CUANDO PIERDE -->
-  <app-game-lost *ngIf="gameLost && gameOver"></app-game-lost>
-
   <!-- INFORMACIÓN CORRECTA -->
   <div *ngIf="correctAnswer && gameOver" class="correct-answer-info">
     <div class="answer-card">
@@ -144,4 +138,9 @@
       </div>
     </div>
   </div>
+  <!-- RESULTADO CUANDO GANA -->
+  <app-game-won *ngIf="gameWon && gameOver"></app-game-won>
+
+  <!-- RESULTADO CUANDO PIERDE -->
+  <app-game-lost *ngIf="gameLost && gameOver"></app-game-lost>
 </div>
