@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import confetti from 'canvas-confetti';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { GuessDriverGameData } from '../../../models/GuessDriver';
@@ -162,6 +163,7 @@ export class PlayGuessDriverComponent implements OnInit {
       this.gameWon = true;
       this.gameOver = true;
       this.correctAnswer = response;
+      confetti();
       this.saveProgress();
       return;
     }
