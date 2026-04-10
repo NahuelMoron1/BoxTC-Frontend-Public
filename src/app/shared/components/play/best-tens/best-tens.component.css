@@ -65,13 +65,14 @@
   color: #00ff88;
   text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
 }
-
 .flag-image {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin: 0 16px;
   object-fit: cover;
+  /* Añadí esta línea: */
+  object-position: top center;
   border: 2px solid #c0e600;
   box-shadow: 0 0 8px rgba(192, 230, 0, 0.3);
 }

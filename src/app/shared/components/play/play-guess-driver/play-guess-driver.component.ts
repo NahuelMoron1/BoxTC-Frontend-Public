@@ -10,7 +10,7 @@ import { GuessDriverService } from '../../../services/guess-driver.service';
 import { GameLostComponent } from '../../game-lost/game-lost.component';
 import { GameNotFoundComponent } from '../../game-not-found/game-not-found.component';
 import { GameWonComponent } from '../../game-won/game-won.component';
-import { GuessDriverModeSelectorComponent } from '../../selectors/guess-driver-mode-selector/guess-driver-mode-selector.component';
+import { GuessDriverSelectorComponent } from '../../selectors/guess-driver-selector/guess-driver-selector.component';
 import { SurrenderComponent } from '../../surrender/surrender.component';
 
 @Component({
@@ -19,10 +19,10 @@ import { SurrenderComponent } from '../../surrender/surrender.component';
     CommonModule,
     FormsModule,
     GameNotFoundComponent,
-    GuessDriverModeSelectorComponent,
     GameWonComponent,
     GameLostComponent,
     SurrenderComponent,
+    GuessDriverSelectorComponent,
   ],
   templateUrl: './play-guess-driver.component.html',
   styleUrl: './play-guess-driver.component.css',
@@ -30,7 +30,7 @@ import { SurrenderComponent } from '../../surrender/surrender.component';
 export class PlayGuessDriverComponent implements OnInit {
   private guessDriverService = inject(GuessDriverService);
   private best10Service = inject(BestTensService);
-  private readonly STORAGE_KEY = 'boxtc-guessDriver-progress';
+  private readonly STORAGE_KEY = 'f1-guessDriver-progress';
 
   protected readonly environment = environment;
 
@@ -44,6 +44,7 @@ export class PlayGuessDriverComponent implements OnInit {
   public gameLost: boolean = false;
   public gameID?: string;
   public season?: number;
+  public gameMode?: string;
 
   // Información del juego
   public selectedDriver?: string;
@@ -99,9 +100,18 @@ export class PlayGuessDriverComponent implements OnInit {
         return;
       }
 
+      const gameDate = parsed.date;
+      const today = new Date().toISOString().split('T')[0];
+
+      if (gameDate !== today) {
+        localStorage.removeItem(this.STORAGE_KEY);
+        return;
+      }
+
+      this.gameMode = parsed.gameMode;
       this.gameStarted = parsed.gameStarted || false;
       this.gameOver = parsed.gameOver || false;
-      this.gameWon = parsed.gameWon || false;
+      this.gameWon = parsed.gameWin || false;
       this.gameLost = parsed.gameLost || false;
       this.selectedDriver = parsed.selectedDriver || '';
       this.selectedDriverId = parsed.selectedDriverId || '';
@@ -210,7 +220,11 @@ export class PlayGuessDriverComponent implements OnInit {
     }
   }
 
-  startGame() {
+  startGame(gameMode?: string) {
+    if (!gameMode) {
+      return;
+    }
+    this.gameMode = gameMode;
     this.gameStarted = true;
     this.showInitialHint();
   }
@@ -230,10 +244,11 @@ export class PlayGuessDriverComponent implements OnInit {
 
   saveProgress() {
     const progress = {
+      gameMode: this.gameMode,
       gameID: this.gameID,
       gameStarted: this.gameStarted,
       gameOver: this.gameOver,
-      gameWon: this.gameWon,
+      gameWin: this.gameWon,
       gameLost: this.gameLost,
       selectedDriver: this.selectedDriver,
       selectedDriverId: this.selectedDriverId,
@@ -242,6 +257,7 @@ export class PlayGuessDriverComponent implements OnInit {
       attemptCount: this.attemptCount,
       attemptedDrivers: this.attemptedDrivers,
       correctAnswer: this.correctAnswer,
+      date: this.gamedata?.date, // Guardar la fecha para validar el progreso diario
     };
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(progress));
   }

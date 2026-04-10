@@ -74,14 +74,14 @@
 }
 
 .hint-box {
-  padding: 15px;
-  margin-bottom: 10px;
+  padding: 12px;
+  margin-bottom: 8px;
   background: rgba(10, 20, 36, 0.8);
   border-left: 4px solid #c0e600;
   border-radius: 4px;
   color: #c0e600;
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  line-height: 1.4;
   animation: slideInLeft 0.3s ease-out;
 }
 

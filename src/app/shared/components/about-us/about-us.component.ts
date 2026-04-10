@@ -48,6 +48,30 @@ export class AboutUsComponent {
       ],
     },
     {
+      title: 'Podiums',
+      image: 'podiums1.png',
+      tagline: 'Adivina los podios de carreras históricas.',
+      description:
+        'Un desafío de memoria y conocimiento: adivina los pilotos en el podio de carreras icónicas del TC. Perfecto para fans que aman la historia del deporte.',
+      howToPlay: [
+        'Elegí tu modo de juego: Modo normal o modo uno por uno.',
+        'En modo normal, adivina los 3 pilotos del podio juntos. En modo uno por uno, adivina cada piloto del podio uno por uno.',
+        'Completa el desafío diario con lógica y conocimiento.',
+      ],
+    },
+    {
+      title: 'Adivina el piloto',
+      image: 'guess-driver1.png',
+      tagline: 'Adivina el piloto de una temporada basado en las pistas dadas.',
+      description:
+        'Un juego de deducción basado en temporadas históricas del TC: adivina el piloto usando pistas sobre su carrera, equipos y logros.',
+      howToPlay: [
+        'Intenta adivinar el piloto con una primera pista sobre su carrera o logros.',
+        'Cada vez que te equivoques, recibirás una pista adicional sobre su carrera o logros.',
+        'Resuelve en el menor número de intentos posible.',
+      ],
+    },
+    /*{
       title: 'Conexiones',
       image: 'connections.png',
       tagline: 'Encuentra las relaciones ocultas.',
@@ -59,7 +83,7 @@ export class AboutUsComponent {
         'Completa el desafío diario con lógica y conocimiento.',
       ],
     },
-    /*{
+    {
       title: 'Guess Teams',
       image: 'guess-teams-1.png',
       tagline: 'Adivina el equipo y todos los miembros del equipo.',

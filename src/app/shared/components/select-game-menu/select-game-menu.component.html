@@ -72,7 +72,7 @@
     </div>
 
     <!-- Connections Game -->
-    <div
+    <!--<div
       class="f1-game-card"
       [ngClass]="{
         'f1-win': gameStatuses.connections === 'win',
@@ -91,7 +91,7 @@
       </div>
     </div>
 
-    <!--<div
+    <div
       class="f1-game-card"
       [ngClass]="{
         'f1-win': gameStatuses.guessTeams === 'win',
@@ -175,6 +175,27 @@
         <h3>BoxTC Podiums</h3>
         <p>Adivina el orden de los pilotos en el podio!</p>
         <button class="f1-play-btn" routerLink="/play/guess-podiums">
+          PLAY
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="f1-game-card"
+      [ngClass]="{
+        'f1-win': gameStatuses.guessDriver === 'win',
+        'f1-lost': gameStatuses.guessDriver === 'lost',
+      }"
+    >
+      <div class="f1-game-image">
+        <img src="guess-driver.png" alt="Guess Driver Game" />
+      </div>
+      <div class="f1-game-info">
+        <h3>BoxTC Adivina el Piloto</h3>
+        <p>
+          Podrás adivinar el piloto por su trayectoria en un año específico?
+        </p>
+        <button class="f1-play-btn" routerLink="/play/guess-driver">
           PLAY
         </button>
       </div>

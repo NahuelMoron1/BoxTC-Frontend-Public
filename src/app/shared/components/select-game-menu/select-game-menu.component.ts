@@ -20,6 +20,7 @@ export class SelectGameMenuComponent {
     guessCareers: null as 'win' | 'lost' | null,
     timeline: null as 'win' | 'lost' | null,
     guessPodiums: null as 'win' | 'lost' | null,
+    guessDriver: null as 'win' | 'lost' | null,
   };
   public today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
@@ -33,6 +34,7 @@ export class SelectGameMenuComponent {
     this.checkGameStatus('guessCareers', 'f1-guessCareers-progress');
     this.checkGameStatus('timeline', 'f1-timeline-progress');
     this.checkGameStatus('guessPodiums', 'f1-guessPodiums-progress');
+    this.checkGameStatus('guessDriver', 'f1-guessDriver-progress');
   }
 
   checkGameStatus(key: keyof typeof this.gameStatuses, storageKey: string) {

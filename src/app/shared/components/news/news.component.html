@@ -27,14 +27,14 @@
       </div>
 
       <div class="buttons" *ngIf="userID === article.userID">
-        <button routerLink="/edit-article/{{ article.id }}">Edit</button>
+        <button routerLink="/edit-article/{{ article.id }}">Editar</button>
       </div>
     </div>
   </div>
 
   <ng-template #noNews>
     <div class="no-news-box">
-      <p>🚫 No news articles available at the moment.</p>
+      <p>🚫 No hay noticias disponibles en este momento.</p>
     </div>
   </ng-template>
 

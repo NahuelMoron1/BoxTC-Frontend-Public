@@ -1,0 +1,28 @@
+<div class="f1-mode-wrapper">
+  <div class="f1-mode-selector">
+    <h2 class="f1-mode-title">BoxTC Adivina el piloto</h2>
+    <p class="f1-mode-description">
+      Elegí tu modo de juego y poné a prueba tus conocimientos del TC.<br />
+      Podrás adivinar el piloto correcto antes de quedarte sin pistas?
+    </p>
+
+    <div class="f1-mode-buttons">
+      <button
+        (click)="gameMode = 'normal'"
+        class="f1-mode-btn soft"
+        [class.selected]="gameMode === 'normal'"
+      >
+        Modo Normal
+      </button>
+    </div>
+
+    <button class="f1-start-btn" (click)="startGame()">Empezar</button>
+  </div>
+
+  <div class="f1-mode-image-placeholder">
+    <!-- Acá podés poner la imagen del piloto -->
+    <div class="f1-image-box">
+      <img src="guess-driver1.png" alt="" />
+    </div>
+  </div>
+</div>

@@ -1,11 +1,11 @@
-<app-guess-driver-mode-selector
-  *ngIf="!gameStarted && gamedata"
-  (startGame)="startGame()"
-></app-guess-driver-mode-selector>
+<app-guess-driver-selector
+  *ngIf="!gameMode && gamedata"
+  (guessSelected)="startGame($event)"
+></app-guess-driver-selector>
 
 <app-game-not-found
   *ngIf="loaded && !gamedata?.id"
-  [gameName]="'Guess Driver'"
+  [gameName]="'Adivinar el Piloto'"
 ></app-game-not-found>
 
 <div class="guess-driver-container" *ngIf="gamedata && gameStarted">
